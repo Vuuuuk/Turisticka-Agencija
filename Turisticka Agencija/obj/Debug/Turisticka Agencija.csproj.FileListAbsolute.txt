@@ -1,0 +1,69 @@
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\Turisticka Agencija.dll.config
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\Turisticka Agencija.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\Turisticka Agencija.pdb
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\csc.exe
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\csc.exe.config
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\csc.rsp
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\csi.exe
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\csi.exe.config
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\csi.rsp
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\System.AppContext.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\System.Console.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\System.IO.Compression.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\System.IO.Pipes.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\System.Security.Claims.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\System.ValueTuple.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\vbc.exe
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\vbc.exe.config
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\vbc.rsp
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\VBCSCompiler.exe
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\System.Web.Helpers.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\System.Web.Mvc.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\System.Web.Razor.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\System.Web.Webpages.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\System.Web.Webpages.Razor.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\System.Web.Razor.xml
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\System.Web.Webpages.xml
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\System.Web.Webpages.Razor.xml
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\System.Web.Helpers.xml
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\System.Web.Mvc.xml
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\obj\Debug\Turisticka Agencija.csprojAssemblyReference.cache
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\obj\Debug\Turisticka Agencija.csproj.CoreCompileInputs.cache
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\obj\Debug\Turisticka Agencija.csproj.CopyComplete
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\obj\Debug\Turisticka Agencija.dll
+C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\obj\Debug\Turisticka Agencija.pdb

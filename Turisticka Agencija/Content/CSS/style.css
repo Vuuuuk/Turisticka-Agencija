@@ -1,0 +1,172 @@
+﻿body{
+    font-family: 'Open-sans', sans-serif;
+    font-size: 17px;
+    color:#4C4C50;
+    line-height:1.5em;
+    margin:0px;
+    padding:0px;
+}
+
+.primary-text{
+    color:#6B905F;
+}
+
+.primary-text-cena {
+    color: #6B905F;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.active a{
+    color: #787880;
+    border-bottom: 3px solid #6B905F;
+    padding-bottom: 2px;
+}
+
+.gore {
+    font-size: 10px;
+    vertical-align: super;
+    font-weight: bold;
+}
+
+.dole {
+    font-size: 10px;
+    vertical-align: sub;
+    margin:-20px;
+}
+
+/*CENTRIRANJE*/
+
+.container {
+    margin: auto;
+}
+
+/*NAVIGACIJA*/
+
+#navbar{
+    text-transform:uppercase;
+}
+
+#navbar li{
+    display:inline;
+    padding-right:20px;
+    list-style:none;
+}
+
+#navbar a{
+    text-decoration:none;
+    color:#4C4C50;
+}
+
+#navbar a:hover{
+    color:#787880;
+    border-bottom:3px solid #6B905F;
+    padding-bottom:3px;
+}
+
+/*HEADER*/
+
+#main-header {
+    border-bottom: 1px solid #6B905F;
+}
+
+#showcase h1{
+    font-size:50px;
+    margin:0;
+    padding-bottom:20px;
+}
+
+#showcase p{
+    color:#6B905F;
+    margin:0;
+}
+
+#showcase .showcase-content{
+    background:#333;
+    color:white;
+    border-radius:50px;
+    padding:40px;
+    opacity:0.8;
+}
+
+#showcase {
+    background-image: url("../Images/header.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-bottom: 1px solid #6B905F;
+    margin-bottom: 30px;
+}
+
+#showcase .row{
+    height:650px;
+}
+
+/*ARANZMANI*/
+
+#offers h2{
+    font-size:35px;
+    margin:0;
+    padding-bottom:10px;
+}
+
+#offers p{
+    color: #4C4C50;
+    margin: 0;
+    margin-bottom: 30px;
+    text-align:center;
+
+}
+
+#offers button{
+    background-color:#7BA17D;
+    color:white;
+    padding:10px;
+    border:0px;
+    width:80px;
+    height:35px;
+    text-align:center;
+    margin:10px;
+}
+
+#offers button:hover {
+    background-color:#618155;
+}
+
+.aranzman {
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+    background-size: cover;
+}
+
+/*INFORMACIJE*/
+
+.info {
+    width: 15px;
+    height: 15px;
+    background-size: cover;
+}
+
+#company{
+    background:#4C4C50;
+    color:white;
+    padding:10px 0;
+}
+
+#company h4{
+    text-transform:uppercase;
+    margin-bottom:0;
+}
+
+#company ul{
+    padding:0px;
+    list-style:none;
+    line-height:2em;
+}
+
+/*FOOTER*/
+
+#main-footer{
+    background-color:#7BA17D;
+    color:white;
+}
