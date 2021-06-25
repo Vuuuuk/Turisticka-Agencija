@@ -32,8 +32,8 @@ namespace Turisticka_Agencija.Models
         public string lokacija;
         public DateTime datumPocetkaPutovanja { get; set; }
         public DateTime datumZavrsetkaPutovanja { get; set; }
-        public string mestoNalazenja { get; set; }
-        public DateTime vremeNalazenja { get; set; }
+        public MestoNalazenja mestoNalazenja { get; set; }
+        public TimeSpan vremeNalazenja { get; set; }
         public int maksimalanBrojPutnika { get; set; }
         public string opisAranzmana { get; set; }
         public string programPutovanja { get; set; }
@@ -44,7 +44,7 @@ namespace Turisticka_Agencija.Models
         public Aranzman() { }
 
         public Aranzman(string naziv, TipAranzmana tipAranzmana, TipPrevoza tipPrevoza, string lokacija, DateTime datumPocetkaPutovanja, 
-                        DateTime datumZavrsetkaPutovanja, string mestoNalazenja, DateTime vremeNalazenja, int maksimalanBrojPutnika, 
+                        DateTime datumZavrsetkaPutovanja, MestoNalazenja mestoNalazenja, TimeSpan vremeNalazenja, int maksimalanBrojPutnika, 
                         string opisAranzmana, string programPutovanja, string posterAranzmana, Smestaj smestaj)
         {
             this.naziv = naziv;

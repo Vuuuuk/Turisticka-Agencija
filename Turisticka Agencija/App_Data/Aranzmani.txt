@@ -1,6 +1,9 @@
-﻿Bodrum;NOCENJE_SA_DORUCKOM;AVION;Turska;30-06-2021;10-07-2021;Beograd;10;Letovanje;Organizovan-avionski-prevoz;~/Content/Images/bodrum.png;HOTEL;Tulemar;3;true;true;false;true;
-Kefalonija;POLUPANSION;AUTOBUS_I_AVION;Grčka;27-06-2021;07-07-2021;Beograd;8;Letovanje;Organizovan-autobuski-avionski-prevoz;~/Content/Images/kefalonija.png;MOTEL;Palacio;4;false;true;true;true;
-Tasos;PUN_PANSION;INDIVIDUALAN;Grčka;28-06-2021;08-07-2021;Beograd;6;Letovanje;Bez-ukljucenog-prevoza;~/Content/Images/tasos.png;VILA;Viroth;5;true;false;true;true;
-Alanja;ALL_INCLUSIVE;OSTALO;Turska;24-06-2021;04-07-2021;Beograd;15;Letovanje;Bez-ukljucenog-prevoza;~/Content/Images/alanja.png;HOTEL;Amanda;5;true;false;true;true;
-Krit;POLUPANSION;INDIVIDUALAN;Grčka;25-06-2021;07-07-2021;Novi-Sad;20;Letovanje;Bez-ukljucenog-prevoza;~/Content/Images/krit.png;HOTEL;Kayakapi;5;true;false;true;true;
-Krf;NAJAM_APARTMANA;OSTALO;Grčka;26-06-2021;06-07-2021;Bečej;5;Letovanje;Bez-ukljucenog-prevoza;~/Content/Images/krf.png;VILA;Hanoi;2;false;true;false;true;
+﻿Bodrum;NOCENJE_SA_DORUCKOM;AVION;Turska;30-06-2021;10-07-2021;Bulevar Oslobodjenja 8;45.262268;19.83057;08.00;10;Letovanje;Organizovan avionski prevoz;../Content/Images/bodrum.jpg;HOTEL;Tulemar;3;true;true;false;true;
+Kefalonija;POLUPANSION;AUTOBUS_I_AVION;Grčka;27-06-2021;07-07-2021;Almaška 6;45.26345;19.84450;09.00;8;Letovanje;Organizovan autobuski i avionski prevoz;../Content/Images/kefalonija.jpg;MOTEL;Palacio;4;false;true;true;true;
+Tasos;PUN_PANSION;INDIVIDUALAN;Grčka;28-06-2021;08-07-2021;Svetozara Miletića;45.25758;19.84441;08.30;6;Letovanje;Bez ukljucenog prevoza;../Content/Images/tasos.jpg;VILA;Viroth;5;true;false;true;true;
+Alanja;ALL_INCLUSIVE;OSTALO;Turska;24-06-2021;04-07-2021;Trg Dositeja Obradovića 6;45.24624;19.85173;08.00;15;Letovanje;Bez ukljucenog prevoza;../Content/Images/alanja.jpg;HOTEL;Amanda;5;true;false;true;true;
+Krit;POLUPANSION;INDIVIDUALAN;Grčka;25-06-2021;07-07-2021;Trg Dositeja Obradovića 3;45.24633;19.85159;10.15;20;Letovanje;Bez ukljucenog prevoza;../Content/Images/krit.jpg;HOTEL;Kayakapi;5;true;false;true;true;
+Krf;NAJAM_APARTMANA;OSTALO;Grčka;26-06-2021;06-07-2021;Bulevar Mihajla Pupina 4a;45.25319;19.84429;09.00;5;Letovanje;Bez ukljucenog prevoza;../Content/Images/krf.jpg;VILA;Hanoi;2;false;true;false;true;
+Kemer;ALL_INCLUSIVE;OSTALO;Turska;01-07-2021;11-07-2021;Trg Dositeja Obradovića 6;45.24624;19.85173;08.00;15;Letovanje;Bez ukljucenog prevoza;../Content/Images/kemer.jpg;HOTEL;Crystal De Luxe;5;true;false;true;true;
+Hurgada;ALL_INCLUSIVE;INDIVIDUALAN;Egipat;07-07-2021;17-07-2021;Trg Dositeja Obradovića 3;45.24633;19.85159;10.15;20;Letovanje;Bez ukljucenog prevoza;../Content/Images/hurgada.jpg;HOTEL;Albatros;5;true;false;true;true;
+Skijatos;ALL_INCLUSIVE;OSTALO;Grčka;21-06-2021;01-07-2021;Trg Dositeja Obradovića 6;45.24624;19.85173;08.00;15;Letovanje;Bez ukljucenog prevoza;../Content/Images/skijatos.jpg;HOTEL;Stelina;5;true;false;true;true;

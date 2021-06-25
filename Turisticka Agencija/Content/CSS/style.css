@@ -103,10 +103,26 @@
 
 /*ARANZMANI*/
 
+#offers a{
+    text-decoration:none;
+    color:#7BA17D;
+}
+
+#offers a:hover{
+    color:#787880;
+}
+
 #offers h2{
     font-size:35px;
     margin:0;
     padding-bottom:10px;
+}
+
+#offers h4 {
+    font-size: 23px;
+    margin: 0;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 #offers p{
@@ -134,8 +150,8 @@
 
 .aranzman {
     border-radius: 50%;
-    width: 65px;
-    height: 65px;
+    width: 105px;
+    height: 105px;
     background-size: cover;
 }
 

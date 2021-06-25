@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Turisticka_Agencija.Models;
 
 namespace Turisticka_Agencija
 {
@@ -13,6 +14,10 @@ namespace Turisticka_Agencija
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            //INIT 
+            Dictionary<string, Aranzman> initAranzmani = Podaci.ProcitajAranzmane("~/App_Data/Aranzmani.txt");
+            HttpContext.Current.Application["aranzmani"] = initAranzmani;
         }
     }
 }

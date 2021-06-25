@@ -1,7 +1,7 @@
 ﻿@using Turisticka_Agencija.Models
 @{
     Layout = null;
-    ViewBag.Title = "Home";
+    ViewBag.Title = "Istorija";
 }
 
 <!DOCTYPE html>
@@ -17,7 +17,6 @@
 }
 
 <html>
-
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="~/Content/CSS/flexboxgrid.css">
@@ -37,8 +36,8 @@
                 <div class="end-sm end-md end-lg col-xs-12 col-sm-8 col-md-8 col-lg-8">
                     <nav id="navbar">
                         <ul>
-                            <li class="active"><a href="~/Home/Index">Home</a></li>
-                            <li><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
+                            <li><a href="~/Home/Index">Home</a></li>
+                            <li class="active"><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
                             <li><a href="~/Login/Index">Prijava</a></li>
                             <li><a href="~/Register/Index">Registracija</a></li>
                         </ul>
@@ -49,7 +48,6 @@
     </header>
 
     <!-- GLAVNI MENI -->
-
     <!-- GLAVNI HEADER -->
 
     <section id="showcase">
@@ -57,22 +55,21 @@
             <div class="row center-xs center-sm center-md center-lg middle-sm">
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg-7 showcase-content">
                     <h1>LETOVANJE 2021 uz <span class="primary-text">Travel</span>Fuge</h1>
-                    <p style="color:white; font-size:25px; margin-top:10px">Klikom do mora</p>
+                    <p style="color:white; font-size:25px; margin-top:10px">Uvek sveže ponude</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- GLAVNI HEADER -->
-
     <!-- ARANZMANI -->
 
     <section id="offers">
         <div class="container">
             <div class="row center-xs center-sm center-md center-md">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <h2>Dostupni aranžmani</h2>
-                    <p>Izbegnite vrućinu uz <span class="primary-text">Travel</span>Fuge</p>
+                    <h2>Prethodni aranžmani</h2>
+                    <p>Trenutne ponude možete pronaći na <a href="~/Home/Index">Home</a> stranici</p>
 
                     <div class="row center-xs center-sm center-md center-md">
 
@@ -81,21 +78,21 @@
                         @{
                             foreach (Aranzman a in aranzmani.Values)
                             {
-                                if(a.datumPocetkaPutovanja.CompareTo(DateTime.Now) > 0)
+                                if (a.datumPocetkaPutovanja.CompareTo(DateTime.Now) <= 0)
                                 {
                                     int brojDana = (a.datumZavrsetkaPutovanja - a.datumPocetkaPutovanja).Days;
                                     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                    <img class="aranzman" src="@a.posterAranzmana" />
-                                    <h4>@a.naziv</h4>
-                                    <p>
-                                        @a.datumPocetkaPutovanja.ToString("dd/MM/yyyy") - @a.datumZavrsetkaPutovanja.ToString("dd/MM/yyyy"). 
-                                        @brojDana dana već od <span class="primary-text-cena">400</span>,<span class="gore">EUR</span><span class="dole">00</span>
-                                        <br>
-                                        <button>
-                                            Pogledaj
-                                        </button>
-                                    </p>
-                                </div>
+                                        <img class="aranzman" src="@a.posterAranzmana" />
+                                        <h4>@a.naziv</h4>
+                                        <p>
+                                            @a.datumPocetkaPutovanja.ToString("dd/MM/yyyy") - @a.datumZavrsetkaPutovanja.ToString("dd/MM/yyyy").
+                                            @brojDana dana već od <span class="primary-text-cena">400</span>,<span class="gore">EUR</span><span class="dole">00</span>
+                                            <br>
+                                            <button>
+                                                Pogledaj
+                                            </button>
+                                        </p>
+                                    </div>
                                 }
                             }
                         }
@@ -106,8 +103,6 @@
                 </div>
             </div>
     </section>
-
-    <!-- ARANZMANI -->
 
     <!-- INFORMACIJE -->
 
@@ -131,7 +126,6 @@
     </section>
 
     <!-- INFORMACIJE -->
-
     <!-- FOOTER -->
 
     <footer id="main-footer">
