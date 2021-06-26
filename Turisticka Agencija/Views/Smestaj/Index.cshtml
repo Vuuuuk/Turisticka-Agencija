@@ -1,0 +1,282 @@
+﻿@using Turisticka_Agencija.Models
+@{
+    Layout = null;
+    ViewBag.Title = "Smeštaj";
+}
+
+<!DOCTYPE html>
+
+@{
+
+    <!--INIT-->
+
+    Dictionary<string, Aranzman> aranzmani = (Dictionary<string, Aranzman>)HttpContext.Current.Application["aranzmani"];
+    Smestaj smestaj = (Smestaj)HttpContext.Current.Application["smestaj"];
+    string naziv = (string)HttpContext.Current.Application["naziv"];
+
+    <!--INIT-->
+
+}
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/CSS/flexboxgrid.css">
+    <link rel="stylesheet" href="~/Content/CSS/style.css">
+</head>
+
+<body>
+
+    <!-- GLAVNI MENI -->
+
+    <header id="main-header">
+        <div class="container">
+            <div class="row center-xs middle-xs middle-sm middle-md middle-lg">
+                <div class="start-sm start-md start-lg col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <h1><span class="primary-text">Travel</span>Fuge</h1>
+                </div>
+                <div class="end-sm end-md end-lg col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                    <nav id="navbar">
+                        <ul>
+                            <li><a href="~/Home/Index">Home</a></li>
+                            <li><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
+                            <li><a href="~/Login/Index">Prijava</a></li>
+                            <li><a href="~/Register/Index">Registracija</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- GLAVNI MENI -->
+    <!-- GLAVNI HEADER -->
+
+    <section id="showcase">
+        <div class="container">
+            <div class="row center-xs center-sm center-md center-lg middle-sm">
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-7 showcase-content">
+                    <h1>LETOVANJE 2021 uz <span class="primary-text">Travel</span>Fuge</h1>
+                    <p style="color:white; font-size:25px; margin-top:10px">Prvoklasni hoteli samo za Vas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GLAVNI HEADER -->
+    <!-- SMESTAJ -->
+
+    <section id="offers">
+        <div class="container">
+            <div class="row center-xs center-sm center-md center-md">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h2><span class="primary-text">@smestaj.naziv</span> smeštajne jedinice</h2>
+                    @{
+                        string DostupnostBazen = string.Empty;
+                        string DostupnostSpa = string.Empty;
+                        string Pristupacnost = string.Empty;
+                        string DostupnostWiFi = string.Empty;
+
+                        string nazivAranzmana = naziv;
+                        string ljubimci = string.Empty;
+
+                        string dostupnost = string.Empty;
+
+                        if (smestaj.bazen)
+                        {
+                            DostupnostBazen = "sa bazenom";
+                        }
+                        else
+                        {
+                            DostupnostBazen = "bez bazena";
+                        }
+                        if (smestaj.spa)
+                        {
+                            DostupnostSpa = ", sa spa centrom";
+                        }
+                        else
+                        {
+                            DostupnostSpa = ", bez spa centra";
+                        }
+                        if (smestaj.prilagodjen)
+                        {
+                            Pristupacnost = ", pristupačan";
+                        }
+                        if (smestaj.wifi)
+                        {
+                            DostupnostWiFi = ", sa internetom";
+                        }
+                        else
+                        {
+                            DostupnostWiFi = ", bez interneta";
+                        }
+
+                    }
+                    <p>@smestaj.tipSmestaja  @DostupnostBazen@DostupnostSpa@DostupnostWiFi@Pristupacnost i sa @smestaj.brojZvezdica zvezdice samo za Vas</p>
+                    <div class="row center-xs center-sm center-md center-md">
+
+                        <!-- SMESTAJNE JEDINICE -->
+
+                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" style="margin-top:25px; margin-bottom:25px">
+
+                            @foreach (SmestajnaJedinica sj in aranzmani[nazivAranzmana].smestaj.smestajneJedinice)
+                            {
+                                if (sj.ljubimci)
+                                {
+                                    ljubimci = "Omogućeni";
+                                }
+                                else
+                                {
+                                    ljubimci = "Onemogućeni";
+                                }
+
+                                if (sj.dostupnost)
+                                {
+                                    dostupnost = "Dostupna";
+                                }
+                                else
+                                {
+                                    dostupnost = "Zauzeta";
+                                }
+
+                                <p style="text-align:justify">
+                                    Dostupnost: @dostupnost<br>
+                                    Dozvoljen broj gostiju: @sj.dozvoljenBrojGostiju<br>
+                                    Ljubimci: @ljubimci<br>
+                                    Cena aranžmana:<span class="primary-text-cena">@sj.cena</span>,<span class="gore">EUR</span><span class="dole">00</span>
+                                </p>
+                            }
+
+                        </div>
+
+                        <!-- SMESTAJNE JEDINICE -->
+
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- SMESTAJ -->
+
+    <!-- PRETRAGA ARANŽMANA -->
+
+    <form action="~/Smestaj/Pretraga" method="post">
+        <section id="offers">
+            <div class="container">
+                <div class="row center-xs center-sm center-md center-md">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <h2 style="margin-top: 15px">Pretraga i sortiranje smeštaja</h2>
+                        <p>Pronađite savršenu sobu uz <span class="primary-text">Travel</span>Fuge</p>
+
+                        <div class="row center-xs center-sm center-md center-md">
+
+                            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                <input type="text" name="brojGostijuMin" placeholder="Minimalan broj gostiju">
+                                <input type="text" name="brojGostijuMax" placeholder="Maksimalan broj gostiju">
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+                                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                    <input type="text" name="cenaJedinice" placeholder="Cena smeštajne jedinice">
+                                    <input list="ljubimci" name="dozvoljeBoravakLjubimcima" placeholder="Odaberite opciju" style="text-align:center">
+                                    <datalist id="ljubimci">
+                                        <option value="Dozvoljen boravak"></option>
+                                        <option value="Nedozvoljen boravak"></option>
+                                    </datalist>
+                                </div>
+                                <input type="text" value="@nazivAranzmana" name="naziv" hidden>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <input type="submit" value="Pretraži"
+                                           style="
+                                        color:white;
+                                        padding:10px;
+                                        border:0px;
+                                        width:267px;
+                                        height:35px;
+                                        text-align:center;
+                                        margin-bottom:30px;">
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </section>
+    </form>
+
+    <!-- PRETRAGA ARANŽMANA -->
+
+    <!-- SORTIRANJE ARANŽMANA -->
+
+    <form action="~/Smestaj/Sortiranje" method="post">
+        <section id="offers">
+            <div class="container">
+                <div class="row center-xs center-sm center-md center-md">
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        <input list="sort" name="podatakZaSortiranje" placeholder="Odaberite podatak za sortiranje" style="text-align:center">
+                        <datalist id="sort">
+                            <option value="Dozvoljen broj gostiju"></option>
+                            <option value="Cena smeštajne jedinice"></option>
+                        </datalist>
+                        <input list="sortTip" name="tipSortiranja" placeholder="Odaberite način sortiranja" style="text-align:center">
+                        <datalist id="sortTip">
+                            <option value="Rastuće"></option>
+                            <option value="Opadajuće"></option>
+                        </datalist>
+                        <input type="text" value="@nazivAranzmana" name="naziv" hidden>
+                        <input type="submit" value="Sortiraj" id="pretraga"
+                               style="
+                               color:white;
+                               padding:10px;
+                               border:0px;
+                               width:267px;
+                               height:35px;
+                               text-align:center;
+                               margin-bottom:30px;">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+
+    <!-- SORTIRANJE ARANŽMANA -->
+
+    <!-- INFORMACIJE -->
+
+    <section id="company">
+        <div class="container">
+            <div class="row">
+                <div class="start-xs start-sm start-md start-lg col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                </div>
+                <div class=" col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <h4 class="center-xs center-sm center-md center-lg">O nama</h4>
+                    <p style="text-align:justify">
+                        Turistička agencija <span class="primary-text">Travel</span>Fuge je sa vama od 1999. godine, kada smo započeli svoju misiju da svima
+                        približimo mogućnost da na jednom mestu mogu pronaći sve turističke usluge.Turističke agencije koje zastupa Maestral Novi Sad – Argus tours,
+                        Plana tours, Nitravel, Moj Svet, Turisttrade, Travelland, Aqua travel, Wayout, Dertour, Astra travel.
+                    </p>
+                </div>
+                <div class="end-xs end-sm end-md end-lg col-xs-12 col-sm-3 col-md-4 col-lg-3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFORMACIJE -->
+
+    <!-- FOOTER -->
+
+    <footer id="main-footer">
+        <div class="container">
+            <div class="row center-xs center-sm center-md center-lg">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p>Copyright &copy; 2021 | TravelFuge</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FOOTER -->
+
+</body>
+
+</html>

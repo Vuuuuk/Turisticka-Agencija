@@ -28,7 +28,7 @@ namespace Turisticka_Agencija.Models
                 double.TryParse(podaci[7], out double geoDuzina);
                 double.TryParse(podaci[8], out double geoSirina);
                 TimeSpan vremeNalazenja = DateTime.ParseExact(podaci[9], "HH.mm", CultureInfo.InvariantCulture).TimeOfDay;
-                int.TryParse(podaci[9], out int maxBrojPutnika);
+                int.TryParse(podaci[10], out int maxBrojPutnika);
                 Enum.TryParse(podaci[14], true, out TipSmestaja tipSmestaja);
                 int.TryParse(podaci[16], out int brojZvezdica);
                 bool.TryParse(podaci[17], out bool bazen);
@@ -36,7 +36,7 @@ namespace Turisticka_Agencija.Models
                 bool.TryParse(podaci[19], out bool prilagodjen);
                 bool.TryParse(podaci[20], out bool wifi);
                 MestoNalazenja mestoNalazenja = new MestoNalazenja(podaci[6], geoDuzina, geoSirina);
-                Smestaj smestaj = new Smestaj(tipSmestaja, podaci[13], brojZvezdica, bazen, spa, prilagodjen, wifi);
+                Smestaj smestaj = new Smestaj(tipSmestaja, podaci[15], brojZvezdica, bazen, spa, prilagodjen, wifi);
                 Aranzman aranzman = new Aranzman(podaci[0], tipAranzmana, tipPrevoza, podaci[3], datumPocetkaPutovanja, datumZavrsetkaPutovanja, mestoNalazenja, 
                                                  vremeNalazenja, maxBrojPutnika, podaci[11], podaci[12], podaci[13], smestaj);
                 aranzmani.Add(aranzman.naziv,aranzman);
@@ -45,6 +45,29 @@ namespace Turisticka_Agencija.Models
             fs.Close();
 
             return aranzmani;
+        }
+
+        public static List<SmestajnaJedinica> ProcitajJedinice(string putanja)
+        {
+            List<SmestajnaJedinica> jedinice = new List<SmestajnaJedinica>();
+            putanja = HostingEnvironment.MapPath(putanja);
+            FileStream fs = new FileStream(putanja, FileMode.Open);
+            StreamReader sr = new StreamReader(fs);
+            string line = "";
+            while ((line = sr.ReadLine()) != null)
+            {
+                string[] podaci = line.Split(';');
+                int.TryParse(podaci[1], out int dozvoljenBrojGostiju);
+                bool.TryParse(podaci[2], out bool ljubimci);
+                int.TryParse(podaci[3], out int cena);
+                bool.TryParse(podaci[4], out bool dostupnost);
+                SmestajnaJedinica smestajnaJedinica = new SmestajnaJedinica(podaci[0], dozvoljenBrojGostiju, ljubimci, cena, dostupnost);
+                jedinice.Add(smestajnaJedinica);
+            }
+            sr.Close();
+            fs.Close();
+
+            return jedinice;
         }
 
     }

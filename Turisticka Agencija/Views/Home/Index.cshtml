@@ -12,6 +12,13 @@
 
     Dictionary<string, Aranzman> aranzmani = (Dictionary<string, Aranzman>)HttpContext.Current.Application["aranzmani"];
 
+    string dpmin = (string)HttpContext.Current.Application["dpmin"];
+    string dpmax = (string)HttpContext.Current.Application["dpmax"];
+    string dkmin = (string)HttpContext.Current.Application["dkmin"];
+    string dkmax = (string)HttpContext.Current.Application["dkmax"];
+
+    List<SmestajnaJedinica> cena = (List<SmestajnaJedinica>)HttpContext.Current.Application["cena"];
+
     <!--INIT-->
 
 }
@@ -79,23 +86,38 @@
                         <!-- LOKACIJE -->
 
                         @{
+                            int najnizaCena = 0;
                             foreach (Aranzman a in aranzmani.Values)
                             {
-                                if(a.datumPocetkaPutovanja.CompareTo(DateTime.Now) > 0)
+
+                                <!-- PRONALAZENJE PRVE CENE U LISTI/NAJNIZE -->
+
+                                foreach (SmestajnaJedinica s in cena)
+                                {
+                                    if (s.nazivSmestaja == a.smestaj.naziv)
+                                    {
+                                        najnizaCena = s.cena;
+                                    }
+                                }
+
+                                <!-- PRONALAZENJE PRVE CENE U LISTI/NAJNIZE -->
+
+                                if (a.datumPocetkaPutovanja.CompareTo(DateTime.Now) > 0)
                                 {
                                     int brojDana = (a.datumZavrsetkaPutovanja - a.datumPocetkaPutovanja).Days;
                                     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                    <img class="aranzman" src="@a.posterAranzmana" />
-                                    <h4>@a.naziv</h4>
-                                    <p>
-                                        @a.datumPocetkaPutovanja.ToString("dd/MM/yyyy") - @a.datumZavrsetkaPutovanja.ToString("dd/MM/yyyy"). 
-                                        @brojDana dana već od <span class="primary-text-cena">400</span>,<span class="gore">EUR</span><span class="dole">00</span>
-                                        <br>
-                                        <button>
-                                            Pogledaj
-                                        </button>
-                                    </p>
-                                </div>
+                                        <img class="aranzman" src="@a.posterAranzmana" />
+                                        <h4>@a.naziv</h4>
+                                        <p>
+                                            @a.datumPocetkaPutovanja.ToString("dd/MM/yyyy") - @a.datumZavrsetkaPutovanja.ToString("dd/MM/yyyy").
+                                            @brojDana dana već od <span class="primary-text-cena">@najnizaCena</span>,<span class="gore">EUR</span><span class="dole">00</span>
+                                            <br />
+                                        </p>
+                                        <form action="~/Informacije/PrikazInformacijaAranzmana" method="post">
+                                            <input type="text" name="naziv" value="@a.naziv" hidden>
+                                            <input type="submit" value="Pogledaj">
+                                        </form>
+                                    </div>
                                 }
                             }
                         }
@@ -105,9 +127,110 @@
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 
     <!-- ARANZMANI -->
+
+    <!-- PRETRAGA ARANŽMANA -->
+
+    <form action="~/Home/Pretraga" method="post">
+        <section id="offers">
+            <div class="container">
+                <div class="row center-xs center-sm center-md center-md">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <h2 style="margin-top: 15px">Pretraga i sortiranje aranžmana</h2>
+                        <p>Pronađite savršeno putovanje uz <span class="primary-text">Travel</span>Fuge</p>
+
+                        <div class="row center-xs center-sm center-md center-md">
+
+                            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                <h4>Datum početka putovanja</h4>
+                                <input type="date" name="datumPocetkaMin" value="@dpmin">
+                                <input type="date" name="datumPocetkaMax" value="@dpmax">
+                            </div>
+                            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                <h4>Datm završetka putovanja</h4>
+                                <input type="date" name="datumZavrsetkaMin" value="@dkmin">
+                                <input type="date" name="datumZavrsetkaMax" value="@dkmax">
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+                            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                <input list="prevoz" name="tipPrevoza" placeholder="Odaberite tip prevoza" style="text-align:center">
+                                <datalist id="prevoz">
+                                    @foreach (TipPrevoza t in aranzmani.Values.Select(tip => tip.tipPrevoza).Distinct())
+                                    {
+                                        <option value="@t.ToString()"></option>
+                                    }
+                                </datalist>
+                            </div>
+                            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                <input list="aranzman" name="tipAranzmana" placeholder="Odaberite tip aranžmana" style="text-align:center">
+                                <datalist id="aranzman">
+                                    @foreach (TipAranzmana t in aranzmani.Values.Select(tip => tip.tipAranzmana).Distinct())
+                                    {
+                                        <option value="@t.ToString()"></option>
+                                    }
+                                </datalist>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <input type="text" placeholder="Unesite ime aranžmana" name="nazivAranzmana">
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <input type="submit" value="Pretraži"
+                                       style="
+                                        color:white;
+                                        padding:10px;
+                                        border:0px;
+                                        width:267px;
+                                        height:35px;
+                                        text-align:center;
+                                        margin-bottom:30px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+
+    <!-- PRETRAGA ARANŽMANA -->
+
+    <!-- SORTIRANJE ARANŽMANA -->
+
+    <form action="~/Home/Sortiranje" method="post">
+        <section id="offers">
+            <div class="container">
+                <div class="row center-xs center-sm center-md center-md">
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        <input list="sort" name="podatakZaSortiranje" placeholder="Odaberite podatak za sortiranje" style="text-align:center">
+                        <datalist id="sort">
+                            <option value="Naziv aranžmana"></option>
+                            <option value="Datum početka putovanja"></option>
+                            <option value="Datum kraja putovanja"></option>
+                        </datalist>
+                        <input list="sortTip" name="tipSortiranja" placeholder="Odaberite način sortiranja" style="text-align:center">
+                        <datalist id="sortTip">
+                            <option value="Rastuće"></option>
+                            <option value="Opadajuće"></option>
+                        </datalist>
+                        <input type="submit" value="Sortiraj" id="pretraga"
+                               style="
+                               color:white;
+                               padding:10px;
+                               border:0px;
+                               width:267px;
+                               height:35px;
+                               text-align:center;
+                               margin-bottom:30px;">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+
+    <!-- SORTIRANJE ARANŽMANA -->
 
     <!-- INFORMACIJE -->
 

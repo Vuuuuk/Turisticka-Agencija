@@ -128,12 +128,12 @@
 #offers p{
     color: #4C4C50;
     margin: 0;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     text-align:center;
 
 }
 
-#offers button{
+#offers input[type="submit"]{
     background-color:#7BA17D;
     color:white;
     padding:10px;
@@ -141,11 +141,49 @@
     width:80px;
     height:35px;
     text-align:center;
-    margin:10px;
+    margin-bottom:30px;
 }
 
-#offers button:hover {
-    background-color:#618155;
+
+#offers input[type="date"] {
+    width: 127px;
+    height: 30px;
+    margin-bottom: 5px;
+    font-size:13px;
+    color: #3E5638;
+}
+#offers input[list] {
+    width: 260px;
+    height: 30px;
+    margin-bottom: 5px;
+    font-size: 15px;
+    color: #3E5638;
+}
+
+#offers input[type="text"] {
+    text-align: center;
+    width: 260px;
+    height: 30px;
+    margin-bottom: 5px;
+    font-size: 15px;
+    color: #3E5638;
+}
+
+#offers input[type="number"] {
+    text-align: center;
+    width: 260px;
+    height: 30px;
+    margin-bottom: 5px;
+    font-size: 15px;
+    color: #3E5638;
+}
+
+#offers input[type="submit"]:hover{
+    background-color: #618155;
+}
+
+#pretraga:hover{
+    background-color: #618155;
 }
 
 .aranzman {
@@ -153,6 +191,23 @@
     width: 105px;
     height: 105px;
     background-size: cover;
+}
+
+.aranzman-detalji {
+    border-radius: 50%;
+    width: 155px;
+    height: 155px;
+    background-size: cover;
+    margin-top: 10px;
+}
+
+.map {
+    min-height: 225px;
+    max-height: 250px;
+    min-width: 500px;
+    max-width: 500px;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 /*INFORMACIJE*/

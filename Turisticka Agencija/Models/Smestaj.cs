@@ -22,10 +22,10 @@ namespace Turisticka_Agencija.Models
         public bool spa { get; set; }
         public bool prilagodjen { get; set; }
         public bool wifi { get; set; }
-        public Dictionary<int, SmestajnaJedinica> smestajneJedinice { get; set; }
+        public List<SmestajnaJedinica> smestajneJedinice { get; set; }
 
 
-        public Smestaj() { }
+        public Smestaj() { smestajneJedinice = new List<SmestajnaJedinica>(); }
 
         public Smestaj(TipSmestaja tipSmestaja, string naziv, int brojZvezdica, bool bazen, bool spa, bool prilagodjen, bool wifi)
         {
@@ -36,6 +36,8 @@ namespace Turisticka_Agencija.Models
             this.spa = spa;
             this.prilagodjen = prilagodjen;
             this.wifi = wifi;
+
+            smestajneJedinice = new List<SmestajnaJedinica>();
         }
     }
 }

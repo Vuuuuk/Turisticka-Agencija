@@ -7,19 +7,21 @@ namespace Turisticka_Agencija.Models
 {
     public class SmestajnaJedinica
     {
-        public int oznakaJedinice { get; set; }
+        public string nazivSmestaja { get; set; }
         public int dozvoljenBrojGostiju { get; set; }
         public bool ljubimci { get; set; }
         public int cena { get; set; }
+        public bool dostupnost { get; set; }
 
         public SmestajnaJedinica() { }
 
-        public SmestajnaJedinica(int oznakaJedinice, int dozvoljenBrojGostiju, bool ljubimci, int cena)
+        public SmestajnaJedinica(string nazivSmestaja, int dozvoljenBrojGostiju, bool ljubimci, int cena, bool dostupnost)
         {
-            this.oznakaJedinice = oznakaJedinice;
+            this.nazivSmestaja = nazivSmestaja;
             this.dozvoljenBrojGostiju = dozvoljenBrojGostiju;
             this.ljubimci = ljubimci;
             this.cena = cena;
+            this.dostupnost = dostupnost;
         }
     }
 }
