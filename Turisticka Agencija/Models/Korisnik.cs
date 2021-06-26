@@ -28,7 +28,7 @@ namespace Turisticka_Agencija.Models
         public string prezime { get; set; }
         public Pol pol { get; set; }
         public string email { get; set; }
-        DateTime datumRodjenja { get; set; }
+        public DateTime datumRodjenja { get; set; }
         public Uloga uloga { get; set; }
         public Dictionary<string, Rezervacija> rezervacije { get; set; }
         public Dictionary<string, Aranzman> aranzmani { get; set; }

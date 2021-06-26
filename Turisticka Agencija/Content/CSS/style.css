@@ -144,7 +144,6 @@
     margin-bottom:30px;
 }
 
-
 #offers input[type="date"] {
     width: 127px;
     height: 30px;
@@ -152,6 +151,7 @@
     font-size:13px;
     color: #3E5638;
 }
+
 #offers input[list] {
     width: 260px;
     height: 30px;
@@ -160,7 +160,26 @@
     color: #3E5638;
 }
 
+
 #offers input[type="text"] {
+    text-align: center;
+    width: 260px;
+    height: 30px;
+    margin-bottom: 5px;
+    font-size: 15px;
+    color: #3E5638;
+}
+
+#offers input[type="email"] {
+    text-align: center;
+    width: 260px;
+    height: 30px;
+    margin-bottom: 5px;
+    font-size: 15px;
+    color: #3E5638;
+}
+
+#offers input[type="password"] {
     text-align: center;
     width: 260px;
     height: 30px;

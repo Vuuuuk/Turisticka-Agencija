@@ -14,6 +14,9 @@
     Smestaj smestaj = (Smestaj)HttpContext.Current.Application["smestaj"];
     string naziv = (string)HttpContext.Current.Application["naziv"];
 
+    Korisnik korisnik = (Korisnik)HttpContext.Current.Session["korisnik"];
+
+
     <!--INIT-->
 
 }
@@ -30,25 +33,107 @@
 
     <!-- GLAVNI MENI -->
 
-    <header id="main-header">
-        <div class="container">
-            <div class="row center-xs middle-xs middle-sm middle-md middle-lg">
-                <div class="start-sm start-md start-lg col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                    <h1><span class="primary-text">Travel</span>Fuge</h1>
+    @{
+        if (korisnik == null)
+        {
+
+            <header id="main-header">
+                <div class="container">
+                    <div class="row center-xs middle-xs middle-sm middle-md middle-lg">
+                        <div class="start-sm start-md start-lg col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <h1><span class="primary-text">Travel</span>Fuge</h1>
+                        </div>
+                        <div class="end-sm end-md end-lg col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                            <nav id="navbar">
+                                <ul>
+                                    <li><a href="~/Home/Index">Home</a></li>
+                                    <li><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
+                                    <li><a href="~/Login/Index">Prijava</a></li>
+                                    <li><a href="~/Register/Index">Registracija</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
                 </div>
-                <div class="end-sm end-md end-lg col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                    <nav id="navbar">
-                        <ul>
-                            <li><a href="~/Home/Index">Home</a></li>
-                            <li><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
-                            <li><a href="~/Login/Index">Prijava</a></li>
-                            <li><a href="~/Register/Index">Registracija</a></li>
-                        </ul>
-                    </nav>
+            </header>
+
+        }
+
+        else if (korisnik != null && korisnik.uloga.Equals(Uloga.TURISTA))
+        {
+
+            <header id="main-header">
+                <div class="container">
+                    <div class="row center-xs middle-xs middle-sm middle-md middle-lg">
+                        <div class="start-sm start-md start-lg col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <h1><span class="primary-text">Travel</span>Fuge</h1>
+                        </div>
+                        <div class="end-sm end-md end-lg col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                            <nav id="navbar">
+                                <ul>
+                                    <li><a href="~/Home/Index">Home</a></li>
+                                    <li><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
+                                    <li><a href="~/Profil/Index">Profil</a></li>
+                                    <li><a href="~/Login/Odjava">Odjava</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </header>
+            </header>
+
+        }
+
+        else if (korisnik != null && korisnik.uloga.Equals(Uloga.MENADZER))
+        {
+
+            <header id="main-header">
+                <div class="container">
+                    <div class="row center-xs middle-xs middle-sm middle-md middle-lg">
+                        <div class="start-sm start-md start-lg col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <h1><span class="primary-text">Travel</span>Fuge</h1>
+                        </div>
+                        <div class="end-sm end-md end-lg col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                            <nav id="navbar">
+                                <ul>
+                                    <li><a href="~/Home/Index">Home</a></li>
+                                    <li><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
+                                    <li><a href="~/Profil/Index">Profil</a></li>
+                                    <li><a href="~/Login/Odjava">Odjava</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        }
+
+        else if (korisnik != null && korisnik.uloga.Equals(Uloga.ADMINISTRATOR))
+        {
+
+            <header id="main-header">
+                <div class="container">
+                    <div class="row center-xs middle-xs middle-sm middle-md middle-lg">
+                        <div class="start-sm start-md start-lg col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <h1><span class="primary-text">Travel</span>Fuge</h1>
+                        </div>
+                        <div class="end-sm end-md end-lg col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                            <nav id="navbar">
+                                <ul>
+                                    <li><a href="~/Home/Index">Home</a></li>
+                                    <li><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
+                                    <li><a href="~/Profil/Index">Profil</a></li>
+                                    <li><a href="~/Login/Odjava">Odjava</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+        }
+
+    }
 
     <!-- GLAVNI MENI -->
     <!-- GLAVNI HEADER -->
@@ -158,7 +243,6 @@
     </section>
 
     <!-- SMESTAJ -->
-
     <!-- PRETRAGA ARANŽMANA -->
 
     <form action="~/Smestaj/Pretraga" method="post">
@@ -176,18 +260,18 @@
                                 <input type="text" name="brojGostijuMax" placeholder="Maksimalan broj gostiju">
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
-                                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                                    <input type="text" name="cenaJedinice" placeholder="Cena smeštajne jedinice">
-                                    <input list="ljubimci" name="dozvoljeBoravakLjubimcima" placeholder="Odaberite opciju" style="text-align:center">
-                                    <datalist id="ljubimci">
-                                        <option value="Dozvoljen boravak"></option>
-                                        <option value="Nedozvoljen boravak"></option>
-                                    </datalist>
-                                </div>
-                                <input type="text" value="@nazivAranzmana" name="naziv" hidden>
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <input type="submit" value="Pretraži"
-                                           style="
+                            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                <input type="text" name="cenaJedinice" placeholder="Cena smeštajne jedinice">
+                                <input list="ljubimci" name="dozvoljeBoravakLjubimcima" placeholder="Odaberite opciju" style="text-align:center">
+                                <datalist id="ljubimci">
+                                    <option value="Dozvoljen boravak"></option>
+                                    <option value="Nedozvoljen boravak"></option>
+                                </datalist>
+                            </div>
+                            <input type="text" value="@nazivAranzmana" name="naziv" hidden>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <input type="submit" value="Pretraži"
+                                       style="
                                         color:white;
                                         padding:10px;
                                         border:0px;
@@ -195,16 +279,15 @@
                                         height:35px;
                                         text-align:center;
                                         margin-bottom:30px;">
-                                </div>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
         </section>
     </form>
 
     <!-- PRETRAGA ARANŽMANA -->
-
     <!-- SORTIRANJE ARANŽMANA -->
 
     <form action="~/Smestaj/Sortiranje" method="post">
@@ -239,7 +322,6 @@
     </form>
 
     <!-- SORTIRANJE ARANŽMANA -->
-
     <!-- INFORMACIJE -->
 
     <section id="company">
@@ -262,7 +344,6 @@
     </section>
 
     <!-- INFORMACIJE -->
-
     <!-- FOOTER -->
 
     <footer id="main-footer">

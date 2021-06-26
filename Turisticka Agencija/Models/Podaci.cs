@@ -70,5 +70,44 @@ namespace Turisticka_Agencija.Models
             return jedinice;
         }
 
+        public static Dictionary<string, Korisnik> ProcitajKorisnike(string putanja)
+        {
+            Dictionary<string, Korisnik> korisnici = new Dictionary<string, Korisnik>();
+            putanja = HostingEnvironment.MapPath(putanja);
+            FileStream fs = new FileStream(putanja, FileMode.Open);
+            StreamReader sr = new StreamReader(fs);
+            string line = "";
+            while ((line = sr.ReadLine()) != null)
+            {
+                string[] podaci = line.Split(';');
+                Enum.TryParse(podaci[4], true, out Pol pol);
+                DateTime datumRodjenja = DateTime.ParseExact(podaci[6], "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                Enum.TryParse(podaci[7], true, out Uloga uloga);
+                Korisnik korisnik = new Korisnik(podaci[0], podaci[1], podaci[2], podaci[3], pol, podaci[5], datumRodjenja, uloga);
+                korisnici.Add(korisnik.korisnicko_ime, korisnik);
+            }
+            sr.Close();
+            fs.Close();
+
+            return korisnici;
+        }
+
+        public static void UcitajKorisnika(Korisnik korisnik)
+        {
+            string path = HostingEnvironment.MapPath("~/App_Data/Korisnici.txt");
+            using (StreamWriter file = File.AppendText(path))
+                file.WriteLine("{0};{1};{2};{3};{4};{5};{6};{7}",
+                                                  korisnik.korisnicko_ime, korisnik.lozinka, korisnik.ime, korisnik.prezime, korisnik.pol,
+                                                  korisnik.email, korisnik.datumRodjenja.ToString("dd/MM/yyyy"),
+                                                  korisnik.uloga);
+        }
+
+        public static void ObrisiKorisnike()
+        {
+            string path = HostingEnvironment.MapPath("~/App_Data/Korisnici.txt");
+            var file = File.Create(path);
+            file.Close();
+        }
+
     }
 }

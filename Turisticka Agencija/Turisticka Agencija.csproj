@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Aranzmani.txt" />
+    <Content Include="App_Data\Korisnici.txt" />
     <Content Include="App_Data\SmestajneJedinice.txt" />
     <Content Include="Content\CSS\flexboxgrid.css" />
     <Content Include="Content\CSS\style.css" />
@@ -120,6 +121,7 @@
     <Compile Include="Controllers\InformacijeController.cs" />
     <Compile Include="Controllers\IstorijaController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProfilController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\SmestajController.cs" />
     <Compile Include="Global.asax.cs">
@@ -148,6 +150,7 @@
     <Content Include="Scripts\OpenLayers\ol.js.map" />
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Smestaj\Index.cshtml" />
+    <Content Include="Views\Profil\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

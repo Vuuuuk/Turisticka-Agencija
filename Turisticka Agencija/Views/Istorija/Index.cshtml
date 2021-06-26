@@ -20,6 +20,8 @@
 
     List<SmestajnaJedinica> cena = (List<SmestajnaJedinica>)HttpContext.Current.Application["cena"];
 
+    Korisnik korisnik = (Korisnik)HttpContext.Current.Session["korisnik"];
+
     <!--INIT-->
 
 }
@@ -35,25 +37,107 @@
 
     <!-- GLAVNI MENI -->
 
-    <header id="main-header">
-        <div class="container">
-            <div class="row center-xs middle-xs middle-sm middle-md middle-lg">
-                <div class="start-sm start-md start-lg col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                    <h1><span class="primary-text">Travel</span>Fuge</h1>
+    @{
+        if (korisnik == null)
+        {
+
+            <header id="main-header">
+                <div class="container">
+                    <div class="row center-xs middle-xs middle-sm middle-md middle-lg">
+                        <div class="start-sm start-md start-lg col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <h1><span class="primary-text">Travel</span>Fuge</h1>
+                        </div>
+                        <div class="end-sm end-md end-lg col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                            <nav id="navbar">
+                                <ul>
+                                    <li><a href="~/Home/Index">Home</a></li>
+                                    <li class="active"><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
+                                    <li><a href="~/Login/Index">Prijava</a></li>
+                                    <li><a href="~/Register/Index">Registracija</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
                 </div>
-                <div class="end-sm end-md end-lg col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                    <nav id="navbar">
-                        <ul>
-                            <li><a href="~/Home/Index">Home</a></li>
-                            <li class="active"><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
-                            <li><a href="~/Login/Index">Prijava</a></li>
-                            <li><a href="~/Register/Index">Registracija</a></li>
-                        </ul>
-                    </nav>
+            </header>
+
+        }
+
+        else if (korisnik != null && korisnik.uloga.Equals(Uloga.TURISTA))
+        {
+
+            <header id="main-header">
+                <div class="container">
+                    <div class="row center-xs middle-xs middle-sm middle-md middle-lg">
+                        <div class="start-sm start-md start-lg col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <h1><span class="primary-text">Travel</span>Fuge</h1>
+                        </div>
+                        <div class="end-sm end-md end-lg col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                            <nav id="navbar">
+                                <ul>
+                                    <li><a href="~/Home/Index">Home</a></li>
+                                    <li class="active"><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
+                                    <li><a href="~/Profil/Index">Profil</a></li>
+                                    <li><a href="~/Login/Odjava">Odjava</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </header>
+            </header>
+
+        }
+
+        else if (korisnik != null && korisnik.uloga.Equals(Uloga.MENADZER))
+        {
+
+            <header id="main-header">
+                <div class="container">
+                    <div class="row center-xs middle-xs middle-sm middle-md middle-lg">
+                        <div class="start-sm start-md start-lg col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <h1><span class="primary-text">Travel</span>Fuge</h1>
+                        </div>
+                        <div class="end-sm end-md end-lg col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                            <nav id="navbar">
+                                <ul>
+                                    <li><a href="~/Home/Index">Home</a></li>
+                                    <li class="active"><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
+                                    <li><a href="~/Profil/Index">Profil</a></li>
+                                    <li><a href="~/Login/Odjava">Odjava</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        }
+
+        else if (korisnik != null && korisnik.uloga.Equals(Uloga.ADMINISTRATOR))
+        {
+
+            <header id="main-header">
+                <div class="container">
+                    <div class="row center-xs middle-xs middle-sm middle-md middle-lg">
+                        <div class="start-sm start-md start-lg col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <h1><span class="primary-text">Travel</span>Fuge</h1>
+                        </div>
+                        <div class="end-sm end-md end-lg col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                            <nav id="navbar">
+                                <ul>
+                                    <li><a href="~/Home/Index">Home</a></li>
+                                    <li class="active"><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
+                                    <li><a href="~/Profil/Index">Profil</a></li>
+                                    <li><a href="~/Login/Odjava">Odjava</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+        }
+
+    }
 
     <!-- GLAVNI MENI -->
     <!-- GLAVNI HEADER -->
@@ -135,7 +219,6 @@
     </section>
 
     <!-- ARANZMANI -->
-
     <!-- PRETRAGA ARANŽMANA -->
 
     <form action="~/Istorija/Pretraga" method="post">
@@ -199,7 +282,6 @@
     </form>
 
     <!-- PRETRAGA ARANŽMANA -->
-
     <!-- SORTIRANJE ARANŽMANA -->
 
     <form action="~/Istorija/Sortiranje" method="post">
@@ -234,7 +316,6 @@
     </form>
 
     <!-- SORTIRANJE ARANŽMANA -->
-
     <!-- INFORMACIJE -->
 
     <section id="company">
@@ -257,7 +338,6 @@
     </section>
 
     <!-- INFORMACIJE -->
-
     <!-- FOOTER -->
 
     <footer id="main-footer">

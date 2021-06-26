@@ -1,0 +1,2 @@
+administrator;administrator;Vuk;Radunović;DRUGO;el.teh.it.radunovic.vuk@gmail.com;05/05/1999;ADMINISTRATOR
+admin;admin;Isidora;Radunović;ZENSKI;rnikola011@gmail.com;11/05/2002;TURISTA

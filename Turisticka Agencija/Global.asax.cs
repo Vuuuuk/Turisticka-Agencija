@@ -16,6 +16,9 @@ namespace Turisticka_Agencija
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             //INIT 
+            Dictionary<string, Korisnik> initKorisnici = Podaci.ProcitajKorisnike("~/App_Data/Korisnici.txt");
+            HttpContext.Current.Application["korisnici"] = initKorisnici;
+
             Dictionary<string, Aranzman> initAranzmani = Podaci.ProcitajAranzmane("~/App_Data/Aranzmani.txt");
             HttpContext.Current.Application["aranzmani"] = initAranzmani;
 

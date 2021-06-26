@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Turisticka_Agencija.Models
+@{
     Layout = null;
     ViewBag.Title = "Login";
 }
@@ -6,6 +7,7 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="~/Content/CSS/flexboxgrid.css">
@@ -13,6 +15,116 @@
 </head>
 
 <body>
+
+    <!-- GLAVNI MENI -->
+
+    <header id="main-header">
+        <div class="container">
+            <div class="row center-xs middle-xs middle-sm middle-md middle-lg">
+                <div class="start-sm start-md start-lg col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <h1><span class="primary-text">Travel</span>Fuge</h1>
+                </div>
+                <div class="end-sm end-md end-lg col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                    <nav id="navbar">
+                        <ul>
+                            <li><a href="~/Home/Index">Home</a></li>
+                            <li><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
+                            <li class="active"><a href="~/Login/Index">Prijava</a></li>
+                            <li><a href="~/Register/Index">Registracija</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- GLAVNI MENI -->
+
+    <!-- GLAVNI HEADER -->
+
+    <section id="showcase">
+        <div class="container">
+            <div class="row center-xs center-sm center-md center-lg middle-sm">
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-7 showcase-content">
+                    <h1>LETOVANJE 2021 uz <span class="primary-text">Travel</span>Fuge</h1>
+                    <p style="color:white; font-size:25px; margin-top:10px">Uvek sveže ponude</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GLAVNI HEADER -->
+
+    <!-- PRIJAVA -->
+
+    <section id="offers">
+        <div class="container">
+            <div class="row center-xs center-sm center-md center-md">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h2>Prijava</h2>
+                    <p>Nemate nalog, registrujte se <a href="~/Register/Index"><span class="primary-text">ovde</span></a> u samo par klikova</p>
+                    <div class="row center-xs center-sm center-md center-md">
+                        <form action="~/Login/Prijava" method="post" style="margin-top:20px; margin-bottom:20px">
+                            <input type="text" name="korisnickoIme" placeholder="Unesite Vaše korisničko ime" required>
+                            <br>
+                            <input type="password" name="lozinka" placeholder="Unesite Vaše korisničku lozinku" required>
+                            <br>
+                            <input type="submit" value="Prijava"
+                                   style="
+                                        color:white;
+                                        padding:10px;
+                                        border:0px;
+                                        width:267px;
+                                        height:34px;
+                                        text-align:center;
+                                        margin-bottom:30px;">
+                        </form>
+                    </div>
+                    <h4 style="margin-bottom:20px; color:#7BA17D">@ViewBag.Error</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRIJAVA -->
+
+    <!-- INFORMACIJE -->
+
+    <section id="company">
+        <div class="container">
+            <div class="row">
+                <div class="start-xs start-sm start-md start-lg col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                </div>
+                <div class=" col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <h4 class="center-xs center-sm center-md center-lg">O nama</h4>
+                    <p style="text-align:justify">
+                        Turistička agencija <span class="primary-text">Travel</span>Fuge je sa vama od 1999. godine, kada smo započeli svoju misiju da svima
+                        približimo mogućnost da na jednom mestu mogu pronaći sve turističke usluge.Turističke agencije koje zastupa Maestral Novi Sad – Argus tours,
+                        Plana tours, Nitravel, Moj Svet, Turisttrade, Travelland, Aqua travel, Wayout, Dertour, Astra travel.
+                    </p>
+                </div>
+                <div class="end-xs end-sm end-md end-lg col-xs-12 col-sm-3 col-md-4 col-lg-3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFORMACIJE -->
+
+    <!-- FOOTER -->
+
+    <footer id="main-footer">
+        <div class="container">
+            <div class="row center-xs center-sm center-md center-lg">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p>Copyright &copy; 2021 | TravelFuge</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FOOTER -->
+
 
 </body>
 
