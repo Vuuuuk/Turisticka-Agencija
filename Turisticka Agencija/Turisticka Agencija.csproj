@@ -123,6 +123,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProfilController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\RezervacijeController.cs" />
     <Compile Include="Controllers\SmestajController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -151,6 +152,7 @@
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Smestaj\Index.cshtml" />
     <Content Include="Views\Profil\Index.cshtml" />
+    <Content Include="Views\Rezervacije\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

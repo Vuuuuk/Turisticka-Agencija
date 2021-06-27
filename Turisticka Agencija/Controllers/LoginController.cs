@@ -35,7 +35,7 @@ namespace Turisticka_Agencija.Controllers
             }
             else
             {
-                ViewBag.Error = "Pogrešno korisničko ime ili lozinka, molimo pokušajte ponovo ili se obratite administratoru!";
+                ViewBag.Error = "Pogrešno korisničko ime ili lozinka, molimo pokušajte ponovo ili se obratite administratoru";
                 return View("~/Views/Login/Index.cshtml");
             }
         }

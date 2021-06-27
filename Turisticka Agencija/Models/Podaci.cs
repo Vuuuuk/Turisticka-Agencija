@@ -61,7 +61,8 @@ namespace Turisticka_Agencija.Models
                 bool.TryParse(podaci[2], out bool ljubimci);
                 int.TryParse(podaci[3], out int cena);
                 bool.TryParse(podaci[4], out bool dostupnost);
-                SmestajnaJedinica smestajnaJedinica = new SmestajnaJedinica(podaci[0], dozvoljenBrojGostiju, ljubimci, cena, dostupnost);
+                int.TryParse(podaci[5], out int IDJedinice);
+                SmestajnaJedinica smestajnaJedinica = new SmestajnaJedinica(podaci[0], dozvoljenBrojGostiju, ljubimci, cena, dostupnost, IDJedinice);
                 jedinice.Add(smestajnaJedinica);
             }
             sr.Close();

@@ -13,11 +13,11 @@ namespace Turisticka_Agencija.Models
 
     public class Rezervacija
     {
-        public string oznakaRezervacije { get; set; }
-        Korisnik korisnik { get; set; }
+        public string oznakaRezervacije { get; set; } //15 karaktera
+        public Korisnik korisnik { get; set; }
         public Status status { get; set; }
-        Aranzman aranzman { get; set; }
-        SmestajnaJedinica smestajnaJedinica { get; set; }
+        public Aranzman aranzman { get; set; }
+        public SmestajnaJedinica smestajnaJedinica { get; set; }
 
         public Rezervacija() { }
 

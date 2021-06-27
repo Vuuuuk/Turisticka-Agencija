@@ -13,15 +13,18 @@ namespace Turisticka_Agencija.Models
         public int cena { get; set; }
         public bool dostupnost { get; set; }
 
+        public int IDJedinice { get; set; }
+
         public SmestajnaJedinica() { }
 
-        public SmestajnaJedinica(string nazivSmestaja, int dozvoljenBrojGostiju, bool ljubimci, int cena, bool dostupnost)
+        public SmestajnaJedinica(string nazivSmestaja, int dozvoljenBrojGostiju, bool ljubimci, int cena, bool dostupnost, int IDJedinice)
         {
             this.nazivSmestaja = nazivSmestaja;
             this.dozvoljenBrojGostiju = dozvoljenBrojGostiju;
             this.ljubimci = ljubimci;
             this.cena = cena;
             this.dostupnost = dostupnost;
+            this.IDJedinice = IDJedinice;
         }
     }
 }
