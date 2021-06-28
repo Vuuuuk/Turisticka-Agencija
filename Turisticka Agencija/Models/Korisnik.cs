@@ -33,7 +33,7 @@ namespace Turisticka_Agencija.Models
         public Dictionary<string, Rezervacija> rezervacije { get; set; }
         public Dictionary<string, Aranzman> aranzmani { get; set; }
 
-        public Korisnik() { rezervacije = new Dictionary<string, Rezervacija>(); }
+        public Korisnik() { rezervacije = new Dictionary<string, Rezervacija>(); aranzmani = new Dictionary<string, Aranzman>(); }
 
         public Korisnik(string korisnicko_ime, string lozinka, string ime, string prezime, Pol pol, string email, DateTime datumRodjenja, Uloga uloga)
         {
@@ -47,6 +47,7 @@ namespace Turisticka_Agencija.Models
             this.uloga = uloga;
 
             rezervacije = new Dictionary<string, Rezervacija>();
+            aranzmani = new Dictionary<string, Aranzman>();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Turisticka_Agencija.Models
     public class Smestaj
     {
         public TipSmestaja tipSmestaja { get; set; }
-        public string naziv { get; set; }
+        public string nazivSmestaja { get; set; }
         public int brojZvezdica { get; set; }
         public bool bazen { get; set; }
         public bool spa { get; set; }
@@ -24,18 +24,22 @@ namespace Turisticka_Agencija.Models
         public bool wifi { get; set; }
         public List<SmestajnaJedinica> smestajneJedinice { get; set; }
 
+        public bool obrisan;
+
 
         public Smestaj() { smestajneJedinice = new List<SmestajnaJedinica>(); }
 
-        public Smestaj(TipSmestaja tipSmestaja, string naziv, int brojZvezdica, bool bazen, bool spa, bool prilagodjen, bool wifi)
+        public Smestaj(TipSmestaja tipSmestaja, string nazivSmestaja, int brojZvezdica, bool bazen, bool spa, bool prilagodjen, bool wifi, bool obrisan)
         {
             this.tipSmestaja = tipSmestaja;
-            this.naziv = naziv;
+            this.nazivSmestaja = nazivSmestaja;
             this.brojZvezdica = brojZvezdica;
             this.bazen = bazen;
             this.spa = spa;
             this.prilagodjen = prilagodjen;
             this.wifi = wifi;
+
+            this.obrisan = obrisan;
 
             smestajneJedinice = new List<SmestajnaJedinica>();
         }

@@ -19,6 +19,9 @@ namespace Turisticka_Agencija
             Dictionary<string, Korisnik> initKorisnici = Podaci.ProcitajKorisnike("~/App_Data/Korisnici.txt");
             HttpContext.Current.Application["korisnici"] = initKorisnici;
 
+            Dictionary<string, Smestaj> initSmestaji = Podaci.ProcitajSmestaje("~/App_Data/Smestaji.txt");
+            HttpContext.Current.Application["smestaji"] = initSmestaji;
+
             Dictionary<string, Aranzman> initAranzmani = Podaci.ProcitajAranzmane("~/App_Data/Aranzmani.txt");
             HttpContext.Current.Application["aranzmani"] = initAranzmani;
 
@@ -27,7 +30,7 @@ namespace Turisticka_Agencija
        
             foreach (SmestajnaJedinica s in initSmestajneJedinice)
                 foreach (Aranzman a in initAranzmani.Values)
-                    if (s.nazivSmestaja.Equals(a.smestaj.naziv))
+                    if (s.nazivSmestaja.Equals(a.smestaj.nazivSmestaja))
                         a.smestaj.smestajneJedinice.Add(s);
 
             //NAJNIZA CENA ZA PRIKAZ

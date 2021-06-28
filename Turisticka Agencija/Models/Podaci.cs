@@ -35,16 +35,38 @@ namespace Turisticka_Agencija.Models
                 bool.TryParse(podaci[18], out bool spa);
                 bool.TryParse(podaci[19], out bool prilagodjen);
                 bool.TryParse(podaci[20], out bool wifi);
+                bool.TryParse(podaci[21], out bool obrisanSmestaj);
+                bool.TryParse(podaci[23], out bool obrisan);
                 MestoNalazenja mestoNalazenja = new MestoNalazenja(podaci[6], geoDuzina, geoSirina);
-                Smestaj smestaj = new Smestaj(tipSmestaja, podaci[15], brojZvezdica, bazen, spa, prilagodjen, wifi);
+                Smestaj smestaj = new Smestaj(tipSmestaja, podaci[15], brojZvezdica, bazen, spa, prilagodjen, wifi, obrisanSmestaj);
                 Aranzman aranzman = new Aranzman(podaci[0], tipAranzmana, tipPrevoza, podaci[3], datumPocetkaPutovanja, datumZavrsetkaPutovanja, mestoNalazenja, 
-                                                 vremeNalazenja, maxBrojPutnika, podaci[11], podaci[12], podaci[13], smestaj);
+                                                 vremeNalazenja, maxBrojPutnika, podaci[11], podaci[12], podaci[13], smestaj, podaci[22], obrisan);
                 aranzmani.Add(aranzman.naziv,aranzman);
             }
             sr.Close();
             fs.Close();
 
             return aranzmani;
+        }
+
+        public static void UcitajAranzman(Aranzman aranzman)
+        {
+            string path = HostingEnvironment.MapPath("~/App_Data/Aranzmani.txt");
+            using (StreamWriter file = File.AppendText(path))
+                file.WriteLine("{0};{1};{2};{3};{4};{5};{6};{7};{8};{9};{10};{11};{12};{13};{14};{15};{16};{17};{18};{19};{20};{21};{22};{23}",
+                                                  aranzman.naziv, aranzman.tipAranzmana, aranzman.tipPrevoza, aranzman.lokacija, 
+                                                  aranzman.datumPocetkaPutovanja.ToString("dd-MM-yyyy"), aranzman.datumZavrsetkaPutovanja.ToString("dd-MM-yyyy"), 
+                                                  aranzman.mestoNalazenja.adresa, aranzman.mestoNalazenja.geoDuzina, aranzman.mestoNalazenja.geoSirina,
+                                                  aranzman.vremeNalazenja.ToString("hh'.'mm"), aranzman.maksimalanBrojPutnika, aranzman.opisAranzmana, aranzman.programPutovanja,
+                                                  aranzman.posterAranzmana, aranzman.smestaj.tipSmestaja, aranzman.smestaj.nazivSmestaja, aranzman.smestaj.brojZvezdica, aranzman.smestaj.bazen,
+                                                  aranzman.smestaj.spa, aranzman.smestaj.prilagodjen, aranzman.smestaj.wifi, aranzman.smestaj.obrisan, aranzman.menadzerID, aranzman.obrisan);
+        }
+
+        public static void ObrisiAranzmane()
+        {
+            string path = HostingEnvironment.MapPath("~/App_Data/Aranzmani.txt");
+            var file = File.Create(path);
+            file.Close();
         }
 
         public static List<SmestajnaJedinica> ProcitajJedinice(string putanja)
@@ -71,6 +93,40 @@ namespace Turisticka_Agencija.Models
             return jedinice;
         }
 
+        public static Dictionary<string, Smestaj> ProcitajSmestaje(string putanja)
+        {
+            Dictionary<string, Smestaj> smestaji = new Dictionary<string, Smestaj>();
+            putanja = HostingEnvironment.MapPath(putanja);
+            FileStream fs = new FileStream(putanja, FileMode.Open);
+            StreamReader sr = new StreamReader(fs);
+            string line = "";
+            while ((line = sr.ReadLine()) != null)
+            {
+                string[] podaci = line.Split(';');
+                Enum.TryParse(podaci[0], true, out TipSmestaja tipSmestaja);
+                int.TryParse(podaci[2], out int brojZvezdica);
+                bool.TryParse(podaci[3], out bool bazen);
+                bool.TryParse(podaci[4], out bool spa);
+                bool.TryParse(podaci[5], out bool prilagodjen);
+                bool.TryParse(podaci[6], out bool wifi);
+                bool.TryParse(podaci[7], out bool obrisan);
+                Smestaj smestaj = new Smestaj(tipSmestaja, podaci[1], brojZvezdica, bazen, spa, prilagodjen, wifi, obrisan);
+                smestaji.Add(smestaj.nazivSmestaja, smestaj);
+            }
+            sr.Close();
+            fs.Close();
+
+            return smestaji;
+        }
+
+        public static void UcitajSmestaj(Smestaj smestaj)
+        {
+            string path = HostingEnvironment.MapPath("~/App_Data/Smestaji.txt");
+            using (StreamWriter file = File.AppendText(path))
+                file.WriteLine("{0};{1};{2};{3};{4};{5};{6};{7}",smestaj.tipSmestaja, smestaj.nazivSmestaja, smestaj.brojZvezdica, smestaj.bazen, 
+                                                             smestaj.spa, smestaj.prilagodjen, smestaj.wifi, smestaj.obrisan);
+        }
+
         public static Dictionary<string, Korisnik> ProcitajKorisnike(string putanja)
         {
             Dictionary<string, Korisnik> korisnici = new Dictionary<string, Korisnik>();
@@ -93,6 +149,7 @@ namespace Turisticka_Agencija.Models
             return korisnici;
         }
 
+
         public static void UcitajKorisnika(Korisnik korisnik)
         {
             string path = HostingEnvironment.MapPath("~/App_Data/Korisnici.txt");
@@ -106,6 +163,13 @@ namespace Turisticka_Agencija.Models
         public static void ObrisiKorisnike()
         {
             string path = HostingEnvironment.MapPath("~/App_Data/Korisnici.txt");
+            var file = File.Create(path);
+            file.Close();
+        }
+
+        public static void ObrisiSmestaje()
+        {
+            string path = HostingEnvironment.MapPath("~/App_Data/Smestaji.txt");
             var file = File.Create(path);
             file.Close();
         }

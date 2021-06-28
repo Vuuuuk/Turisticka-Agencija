@@ -1,0 +1,295 @@
+﻿@using Turisticka_Agencija.Models
+@{
+    Layout = null;
+    ViewBag.Title = "MenadžerizmenaAranzmana";
+}
+
+<!DOCTYPE html>
+
+@{
+
+    <!--INIT-->
+
+    Dictionary<string, Aranzman> aranzmani = (Dictionary<string, Aranzman>)HttpContext.Current.Application["aranzmani"];
+
+    Korisnik korisnik = (Korisnik)HttpContext.Current.Session["korisnik"];
+
+    string nazivAranzmana = (string)HttpContext.Current.Application["nazivAranzmana"];
+
+    <!--INIT-->
+
+}
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/CSS/flexboxgrid.css">
+    <link rel="stylesheet" href="~/Content/CSS/style.css">
+    <link rel="stylesheet" href="~/Scripts/OpenLayers/ol.css">
+    <script src="~/Scripts/OpenLayers/ol.js"></script>
+</head>
+
+<body>
+
+    <!-- GLAVNI MENI -->
+
+    @{
+        if (korisnik != null && korisnik.uloga.Equals(Uloga.MENADZER))
+        {
+
+            <header id="main-header">
+                <div class="container">
+                    <div class="row center-xs middle-xs middle-sm middle-md middle-lg">
+                        <div class="start-sm start-md start-lg col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                            <h1><span class="primary-text">Travel</span>Fuge</h1>
+                        </div>
+                        <div class="end-sm end-md end-lg col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                            <nav id="navbar">
+                                <ul>
+                                    <li><a href="~/Home/Index">Home</a></li>
+                                    <li><a href="~/Rezervacije/Index">Rezervacije</a></li>
+                                    <li><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
+                                    <li><a href="~/Menadzer/Index">Kreriraj aranžman</a></li>
+                                    <li><a href="~/Profil/Index">Profil</a></li>
+                                    <li><a href="~/Login/Odjava">Odjava</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        }
+
+        else if (korisnik != null && korisnik.uloga.Equals(Uloga.ADMINISTRATOR))
+        {
+
+            <header id="main-header">
+                <div class="container">
+                    <div class="row center-xs middle-xs middle-sm middle-md middle-lg">
+                        <div class="start-sm start-md start-lg col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <h1><span class="primary-text">Travel</span>Fuge</h1>
+                        </div>
+                        <div class="end-sm end-md end-lg col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                            <nav id="navbar">
+                                <ul>
+                                    <li><a href="~/Home/Index">Home</a></li>
+                                    <li><a href="~/Rezervacije/Index">Rezervacije</a></li>
+                                    <li><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
+                                    <li><a href="~/Menadzer/Index">Kreriraj aranžman</a></li>
+                                    <li><a href="~/Administrator/Index">Registruj menadžera</a></li>
+                                    <li><a href="~/Profil/Index">Profil</a></li>
+                                    <li><a href="~/Login/Odjava">Odjava</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+        }
+
+    }
+
+    <!-- GLAVNI MENI -->
+    <!-- GLAVNI HEADER -->
+
+    <section id="showcase">
+        <div class="container">
+            <div class="row center-xs center-sm center-md center-lg middle-sm">
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-9 showcase-content">
+                    <h1>LETOVANJE 2021 uz <span class="primary-text">Travel</span>Fuge</h1>
+                    <p style="color:white; font-size:25px; margin-top:10px">Klikom do mora</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GLAVNI HEADER -->
+    <!-- ARANZMAN -->
+
+    <section id="offers">
+        <div class="container">
+            <div class="row center-xs center-sm center-md center-md">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h2>Izmena aranžmana</h2>
+                    <p>Vaše postojeće aranžmane možete pregledati i izmeniti <a href="~/Menadzer/Pregled"><span class="primary-text">ovde</span></a></p>
+
+                    <h4 style="margin-bottom:20px; color:#7BA17D">@ViewBag.Error</h4>
+
+                </div>
+                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+                    <div class="row center-xs center-sm center-md center-md">
+                        <form action="~/AranzmanIzmena/IzmeniAranzman" method="post" style="margin-top:20px; margin-bottom:20px">
+                            <input type="text" name="naziv" placeholder="Unesite naziv aranžmana" value="@aranzmani[nazivAranzmana].naziv" required>
+                            <input list="tipA" name="tipAranzmana" placeholder="Odaberite tip aranzmana" style="text-align:center" value="@aranzmani[nazivAranzmana].tipAranzmana.ToString()" required>
+                            <datalist id="tipA">
+                                <option value="NOCENJE_SA_DORUCKOM"></option>
+                                <option value="POLUPANSION"></option>
+                                <option value="PUN_PANSION"></option>
+                                <option value="ALL_INCLUSIVE"></option>
+                                <option value="NAJAM_APARTMANA"></option>
+                            </datalist>
+                            <br>
+                            <input list="tipP" name="tipPrevoza" placeholder="Odaberite tip prevoza" style="text-align:center" value="@aranzmani[nazivAranzmana].tipPrevoza.ToString()" required>
+                            <datalist id="tipP">
+                                <option value="AUTOBUS"></option>
+                                <option value="AVION"></option>
+                                <option value="AUTOBUS_I_AVION"></option>
+                                <option value="INDIVIDUALAN"></option>
+                                <option value="OSTALO"></option>
+                            </datalist>
+                            <input type="text" name="lokacija" placeholder="Unesite lokaciju aranžmana" value="@aranzmani[nazivAranzmana].lokacija" required>
+                            <br>
+                            <input type="date" name="datumPocetkaPutovanja" placeholder="Unesite datum početka aranžmana" value="@aranzmani[nazivAranzmana].datumPocetkaPutovanja.ToString("yyyy-MM-dd")" required style="width:263px; text-align:center">
+                            <input type="date" name="datumZavrsetkaPutovanja" placeholder="Unesite datum završetka aranžmana" value="@aranzmani[nazivAranzmana].datumZavrsetkaPutovanja.ToString("yyyy-MM-dd")" required style="width:263px; text-align:center">
+                            <br>
+                            <input type="text" id="adresa" name="adresa" placeholder="Odaberite adresu sa mape" value="@aranzmani[nazivAranzmana].mestoNalazenja.adresa" required>
+                            <input type="number" name="maksimalanBrojPutnika" placeholder="Unesite broj putnika" value="@aranzmani[nazivAranzmana].maksimalanBrojPutnika" required>
+                            <br>
+                            <input type="text" id="geoDuzina" name="geoDuzina" placeholder="Geograska duzina odabrane lokacije" value="@aranzmani[nazivAranzmana].mestoNalazenja.geoDuzina" required>
+                            <input type="text" id="geoSirina" name="geoSirina" placeholder="Geograska sirina odabrane lokacije" value="@aranzmani[nazivAranzmana].mestoNalazenja.geoSirina" required>
+                            <br>
+                            <input type="text" name="opisAranzmana" placeholder="Unesite opis aranžmana" value="@aranzmani[nazivAranzmana].opisAranzmana" required>
+                            <input type="text" name="programPutovanja" placeholder="Unesite program putovanja" value="@aranzmani[nazivAranzmana].programPutovanja" required>
+                            <br>
+                            <input type="text" name="vremeNalazenja" placeholder="Unesite vreme nalaženja" value="@aranzmani[nazivAranzmana].vremeNalazenja.ToString("hh':'mm")" required>
+                            <input list="tipS" name="tipSmestaja" placeholder="Odaberite tip smeštaja" style="text-align:center" value="@aranzmani[nazivAranzmana].tipAranzmana.ToString()" required>
+                            <datalist id="tipS">
+                                <option value="HOTEL"></option>
+                                <option value="MOTEL"></option>
+                                <option value="VILA"></option>
+                            </datalist>
+                            <br>
+                            <input type="text" name="naziv" placeholder="Unesite naziv smeštaja" value="@aranzmani[nazivAranzmana].smestaj.nazivSmestaja" required>
+                            <input type="number" name="brojZvezdica" placeholder="Unesite broj zvezdica smeštaja" value="@aranzmani[nazivAranzmana].smestaj.brojZvezdica" required>
+                            <br>
+                            <input list="dostupanSpa" name="spa" placeholder="Odaberite dostupnost spa centra" style="text-align:center" value="@aranzmani[nazivAranzmana].smestaj.spa.ToString()" required>
+                            <datalist id="dostupanSpa">
+                                <option value="true"></option>
+                                <option value="false"></option>
+                            </datalist>
+                            <input list="prilagodjenost" name="prilagodjen" placeholder="Označite pristupačnost" style="text-align:center" value="@aranzmani[nazivAranzmana].smestaj.prilagodjen.ToString()" required>
+                            <datalist id="prilagodjenost">
+                                <option value="true"></option>
+                                <option value="false"></option>
+                            </datalist>
+                            <br>
+                            <input list="dostupanWifi" name="wifi" placeholder="Odaberite dostupnost interneta" style="text-align:center" value="@aranzmani[nazivAranzmana].smestaj.wifi.ToString()" required>
+                            <datalist id="dostupanWifi">
+                                <option value="true"></option>
+                                <option value="false"></option>
+                            </datalist>
+                            <input type="text" name="menadzerID" hidden value="@korisnik.korisnicko_ime">
+                            <input type="text" name="obrisan" hidden value="@aranzmani[nazivAranzmana].obrisan.ToString()">
+                            <input type="text" name="posterAranzmana" hidden value="../Content/Images/placeholder.png">
+                            <input type="text" name="obrisan" hidden value="false">
+                            <input list="dostupanBazen" name="bazen" placeholder="Odaberite dostupnost bazena" style="text-align:center" value="@aranzmani[nazivAranzmana].smestaj.bazen.ToString()" required>
+                            <datalist id="dostupanBazen">
+                                <option value="true"></option>
+                                <option value="false"></option>
+                            </datalist>
+                            <br>
+                            <input type="submit" value="izmeni aranžman"
+                                   style="
+                                        color:white;
+                                        padding:10px;
+                                        border:0px;
+                                        width:540px;
+                                        height:34px;
+                                        text-align:center;
+                                        margin-bottom:30px;">
+                        </form>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 map" id="map" style="min-height:438px; min-width:600px; margin-left:-75px" />
+            </div>
+        </div>
+    </section>
+
+    <script>
+        var centerPoint = ol.proj.transform([@aranzmani[nazivAranzmana].mestoNalazenja.geoDuzina, @aranzmani[nazivAranzmana].mestoNalazenja.geoSirina], 'EPSG:4326', 'EPSG:3857');
+        const map = new ol.Map({
+            target: 'map',
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                })
+            ],
+            view: new ol.View({
+                center: centerPoint,
+                zoom: 18
+            })
+        });
+
+
+        var vectorLayer = new ol.layer.Vector({
+            source: new ol.source.Vector({
+                features: [new ol.Feature({
+                    geometry: new ol.geom.Point(centerPoint),
+                })]
+            }),
+            style: new ol.style.Style({
+                image: new ol.style.Icon({
+                    src: "../Content/Images/Point.png"
+                })
+            })
+        });
+
+        map.addLayer(vectorLayer);
+
+
+        map.on('click', function (e) {
+            var kordinate = ol.proj.toLonLat(e.coordinate);
+            document.getElementById("geoDuzina").value = kordinate[0];
+            document.getElementById("geoSirina").value = kordinate[1];
+            fetch('http://nominatim.openstreetmap.org/reverse?format=json&lon=' + kordinate[0] + '&lat=' + kordinate[1])
+                .then(function (response) {
+                    return response.json();
+                }).then(function (json) {
+                    document.getElementById("adresa").value = json.address.road + " " + json.address.house_number + ", " + json.address.city_district + ", " + json.address.postcode;
+                });
+
+        });
+    </script>
+
+    <!-- ARANZMAN -->
+    <!-- INFORMACIJE -->
+
+    <section id="company">
+        <div class="container">
+            <div class="row">
+                <div class="start-xs start-sm start-md start-lg col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                </div>
+                <div class=" col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <h4 class="center-xs center-sm center-md center-lg">O nama</h4>
+                    <p style="text-align:justify">
+                        Turistička agencija <span class="primary-text">Travel</span>Fuge je sa vama od 1999. godine, kada smo započeli svoju misiju da svima
+                        približimo mogućnost da na jednom mestu mogu pronaći sve turističke usluge.Turističke agencije koje zastupa Maestral Novi Sad – Argus tours,
+                        Plana tours, Nitravel, Moj Svet, Turisttrade, Travelland, Aqua travel, Wayout, Dertour, Astra travel.
+                    </p>
+                </div>
+                <div class="end-xs end-sm end-md end-lg col-xs-12 col-sm-3 col-md-4 col-lg-3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFORMACIJE -->
+    <!-- FOOTER -->
+
+    <footer id="main-footer">
+        <div class="container">
+            <div class="row center-xs center-sm center-md center-lg">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p>Copyright &copy; 2021 | TravelFuge</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FOOTER -->
+
+</body>
+
+</html>

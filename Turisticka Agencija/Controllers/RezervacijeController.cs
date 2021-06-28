@@ -13,6 +13,26 @@ namespace Turisticka_Agencija.Controllers
         // GET: Rezervacije
         public ActionResult Index()
         {
+
+            //FULL RESET
+
+            Dictionary<string, Aranzman> aranzmani = Podaci.ProcitajAranzmane("~/App_Data/Aranzmani.txt");
+            HttpContext.Application["aranzmani"] = aranzmani;
+
+            List<SmestajnaJedinica> initSmestajneJedinice = Podaci.ProcitajJedinice("~/App_Data/SmestajneJedinice.txt");
+
+            foreach (SmestajnaJedinica s in initSmestajneJedinice)
+                foreach (Aranzman a in aranzmani.Values)
+                    if (s.nazivSmestaja.Equals(a.smestaj.nazivSmestaja))
+                        a.smestaj.smestajneJedinice.Add(s);
+
+            List<SmestajnaJedinica> najnizaCenaZaPrikaz = new List<SmestajnaJedinica>();
+            foreach (SmestajnaJedinica s in initSmestajneJedinice.OrderByDescending(vrednost => vrednost.cena))
+                najnizaCenaZaPrikaz.Add(s);
+            HttpContext.Application["cena"] = najnizaCenaZaPrikaz;
+
+            //FULL RESET
+
             Dictionary<string, Rezervacija> rezervacije = (Dictionary<string, Rezervacija>)HttpContext.Application["rezervacije"];
             Korisnik korisnik = (Korisnik)HttpContext.Session["korisnik"];
             korisnik.rezervacije = rezervacije;

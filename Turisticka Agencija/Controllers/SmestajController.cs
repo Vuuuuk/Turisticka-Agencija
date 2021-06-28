@@ -19,7 +19,7 @@ namespace Turisticka_Agencija.Controllers
         private static Random random = new Random();
         public static string RandomString(int length)
         {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789VEOMAMALESANSEDASEDOGODIDAIMAMISTIKLJUCJERJEJAKOVELIKOVAJSTRING";
             return new string(Enumerable.Repeat(chars, length)
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
@@ -44,7 +44,7 @@ namespace Turisticka_Agencija.Controllers
 
             foreach (SmestajnaJedinica s in initSmestajneJedinice)
                 foreach (Aranzman a in aranzmani.Values)
-                    if (s.nazivSmestaja.Equals(a.smestaj.naziv))
+                    if (s.nazivSmestaja.Equals(a.smestaj.nazivSmestaja))
                         a.smestaj.smestajneJedinice.Add(s);
 
             List<SmestajnaJedinica> najnizaCenaZaPrikaz = new List<SmestajnaJedinica>();
@@ -101,7 +101,7 @@ namespace Turisticka_Agencija.Controllers
 
             foreach (SmestajnaJedinica s in sortiraneJedinice)
                 foreach (Aranzman a in aranzmani.Values)
-                    if (s.nazivSmestaja.Equals(a.smestaj.naziv))
+                    if (s.nazivSmestaja.Equals(a.smestaj.nazivSmestaja))
                         a.smestaj.smestajneJedinice.Add(s);
 
             HttpContext.Application["aranzmani"] = aranzmani;
@@ -128,7 +128,7 @@ namespace Turisticka_Agencija.Controllers
 
                 foreach (SmestajnaJedinica s in sortiraneJedinice)
                     foreach (Aranzman a in aranzmani.Values)
-                        if (s.nazivSmestaja.Equals(a.smestaj.naziv))
+                        if (s.nazivSmestaja.Equals(a.smestaj.nazivSmestaja))
                             a.smestaj.smestajneJedinice.Add(s);
 
                 HttpContext.Application["aranzmani"] = aranzmani;
@@ -147,7 +147,7 @@ namespace Turisticka_Agencija.Controllers
 
                 foreach (SmestajnaJedinica s in sortiraneJedinice)
                     foreach (Aranzman a in aranzmani.Values)
-                        if (s.nazivSmestaja.Equals(a.smestaj.naziv))
+                        if (s.nazivSmestaja.Equals(a.smestaj.nazivSmestaja))
                             a.smestaj.smestajneJedinice.Add(s);
 
                 HttpContext.Application["aranzmani"] = aranzmani;
@@ -166,7 +166,7 @@ namespace Turisticka_Agencija.Controllers
 
                 foreach (SmestajnaJedinica s in sortiraneJedinice)
                     foreach (Aranzman a in aranzmani.Values)
-                        if (s.nazivSmestaja.Equals(a.smestaj.naziv))
+                        if (s.nazivSmestaja.Equals(a.smestaj.nazivSmestaja))
                             a.smestaj.smestajneJedinice.Add(s);
 
                 HttpContext.Application["aranzmani"] = aranzmani;
@@ -189,7 +189,7 @@ namespace Turisticka_Agencija.Controllers
 
                             foreach (SmestajnaJedinica s in sortiraneJedinice)
                                 foreach (Aranzman a in aranzmani.Values)
-                                    if (s.nazivSmestaja.Equals(a.smestaj.naziv))
+                                    if (s.nazivSmestaja.Equals(a.smestaj.nazivSmestaja))
                                         a.smestaj.smestajneJedinice.Add(s);
 
                             HttpContext.Application["aranzmani"] = aranzmani;
@@ -209,7 +209,7 @@ namespace Turisticka_Agencija.Controllers
 
                             foreach (SmestajnaJedinica s in sortiraneJedinice)
                                 foreach (Aranzman a in aranzmani.Values)
-                                    if (s.nazivSmestaja.Equals(a.smestaj.naziv))
+                                    if (s.nazivSmestaja.Equals(a.smestaj.nazivSmestaja))
                                         a.smestaj.smestajneJedinice.Add(s);
 
                             HttpContext.Application["aranzmani"] = aranzmani;
@@ -237,12 +237,20 @@ namespace Turisticka_Agencija.Controllers
                 }
 
             Rezervacija rezervacija = new Rezervacija(RandomString(15),korisnik,Status.AKTIVNA,aranzmani[nazivAranzmana],smestaj);
+
+            if (korisnik.rezervacije == null)
+                korisnik.rezervacije = new Dictionary<string, Rezervacija>();
+
             korisnik.rezervacije.Add(rezervacija.oznakaRezervacije,rezervacija);
 
+            if (testiranje.ContainsKey(rezervacija.oznakaRezervacije))
+                testiranje[rezervacija.oznakaRezervacije] = rezervacija;
+            else
             testiranje.Add(rezervacija.oznakaRezervacije, rezervacija);
-            HttpContext.Application["rezervacije"] = testiranje;
 
+            HttpContext.Application["rezervacije"] = testiranje;
             HttpContext.Application["aranzmani"] = aranzmani;
+
             HttpContext.Session["korisnik"] = korisnik;
 
             return View("~/Views/Smestaj/Index.cshtml");
@@ -265,7 +273,11 @@ namespace Turisticka_Agencija.Controllers
             Rezervacija rezervacija = new Rezervacija(RandomString(15), korisnik, Status.OTKAZANA, aranzmani[nazivAranzmana], smestaj);
             korisnik.rezervacije.Add(rezervacija.oznakaRezervacije, rezervacija);
 
+            if (testiranje.ContainsKey(rezervacija.oznakaRezervacije))
+                testiranje[rezervacija.oznakaRezervacije] = rezervacija;
+            else
             testiranje.Add(rezervacija.oznakaRezervacije, rezervacija);
+
             HttpContext.Application["rezervacije"] = testiranje;
 
             HttpContext.Application["aranzmani"] = aranzmani;

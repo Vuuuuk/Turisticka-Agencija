@@ -91,14 +91,16 @@
             <header id="main-header">
                 <div class="container">
                     <div class="row center-xs middle-xs middle-sm middle-md middle-lg">
-                        <div class="start-sm start-md start-lg col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <div class="start-sm start-md start-lg col-xs-12 col-sm-2 col-md-2 col-lg-2">
                             <h1><span class="primary-text">Travel</span>Fuge</h1>
                         </div>
-                        <div class="end-sm end-md end-lg col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                        <div class="end-sm end-md end-lg col-xs-12 col-sm-10 col-md-10 col-lg-10">
                             <nav id="navbar">
                                 <ul>
                                     <li><a href="~/Home/Index">Home</a></li>
+                                    <li><a href="~/Rezervacije/Index">Rezervacije</a></li>
                                     <li><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
+                                    <li><a href="~/Menadzer/Index">Kreriraj aranžman</a></li>
                                     <li><a href="~/Profil/Index">Profil</a></li>
                                     <li><a href="~/Login/Odjava">Odjava</a></li>
                                 </ul>
@@ -122,7 +124,10 @@
                             <nav id="navbar">
                                 <ul>
                                     <li><a href="~/Home/Index">Home</a></li>
+                                    <li><a href="~/Rezervacije/Index">Rezervacije</a></li>
                                     <li><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
+                                    <li><a href="~/Menadzer/Index">Kreriraj aranžman</a></li>
+                                    <li><a href="~/Administrator/Index">Registruj menadžera</a></li>
                                     <li><a href="~/Profil/Index">Profil</a></li>
                                     <li><a href="~/Login/Odjava">Odjava</a></li>
                                 </ul>
@@ -137,13 +142,12 @@
     }
 
     <!-- GLAVNI MENI -->
-
     <!-- GLAVNI HEADER -->
 
     <section id="showcase">
         <div class="container">
             <div class="row center-xs center-sm center-md center-lg middle-sm">
-                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-7 showcase-content">
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-9 showcase-content">
                     <h1>LETOVANJE 2021 uz <span class="primary-text">Travel</span>Fuge</h1>
                     <p style="color:white; font-size:25px; margin-top:10px">Ostvarite Vaš san</p>
                 </div>
@@ -152,7 +156,6 @@
     </section>
 
     <!-- GLAVNI HEADER -->
-
     <!-- ARANZMANI -->
 
     <section id="offers">
@@ -189,31 +192,34 @@
                         <!-- LOKACIJE -->
 
                         @{
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                <p style="text-align:justify;margin-top:25px;">
-                                    Usluga: @aranzman.tipAranzmana.ToString().Replace('_', ' ')<br>
-                                    Prevoz: @aranzman.tipPrevoza.ToString().Replace('_', ' ')<br>
-                                    Destinacija: @aranzman.lokacija<br>
-                                    Mesto polaska: @aranzman.mestoNalazenja.adresa<br>
-                                    Vreme polaska: @aranzman.vremeNalazenja.ToString("hh':'mm")<br>
-                                    Broj putnika: @aranzman.maksimalanBrojPutnika<br>
-                                    Opis: @aranzman.opisAranzmana<br>
-                                    Program: @aranzman.programPutovanja<br>
-                                </p>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <p style="text-align:justify;margin-top:25px;">
+                                Usluga: @aranzman.tipAranzmana.ToString().Replace('_', ' ')<br>
+                                Prevoz: @aranzman.tipPrevoza.ToString().Replace('_', ' ')<br>
+                                Destinacija: @aranzman.lokacija<br>
+                                Mesto polaska: @aranzman.mestoNalazenja.adresa<br>
+                                Vreme polaska: @aranzman.vremeNalazenja.ToString("hh':'mm")<br>
+                                Broj putnika: @aranzman.maksimalanBrojPutnika<br>
+                                Opis: @aranzman.opisAranzmana<br>
+                                Program: @aranzman.programPutovanja<br>
+                            </p>
+                            @if (aranzman.smestaj.obrisan.Equals(false))
+                            {
                                 <form action="~/Smestaj/PrikazInformacijaSmestaja" method="post">
                                     <p style="text-align:justify;margin-bottom:25px;margin-top:-10px">
                                         <input type="text" name="naziv" value="@aranzman.naziv" hidden>
                                         Smestaj: @aranzman.smestaj.tipSmestaja.ToString() <input type="submit"
                                                                                                  style="background-color:transparent; color:#83905F; margin:-10px; font-size:17px"
-                                                                                                 value="@aranzman.smestaj.naziv">
+                                                                                                 value="@aranzman.smestaj.nazivSmestaja">
                                     </p>
                                 </form>
-                            </div>
+                            }
+                        </div>
 
                             <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 map" id="map" />
 
                             <script>
-                                var centerPoint = ol.proj.transform([@aranzman.mestoNalazenja.geoSirina, @aranzman.mestoNalazenja.geoDuzina], 'EPSG:4326', 'EPSG:3857');
+                                var centerPoint = ol.proj.transform([@aranzman.mestoNalazenja.geoDuzina, @aranzman.mestoNalazenja.geoSirina], 'EPSG:4326', 'EPSG:3857');
                                     const map = new ol.Map({
                                         target: 'map',
                                         layers: [
@@ -252,7 +258,6 @@
     </section>
 
     <!-- ARANZMANI -->
-
     <!-- INFORMACIJE -->
 
     <section id="company">
@@ -275,7 +280,6 @@
     </section>
 
     <!-- INFORMACIJE -->
-
     <!-- FOOTER -->
 
     <footer id="main-footer">

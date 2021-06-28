@@ -90,6 +90,7 @@
   <ItemGroup>
     <Content Include="App_Data\Aranzmani.txt" />
     <Content Include="App_Data\Korisnici.txt" />
+    <Content Include="App_Data\Smestaji.txt" />
     <Content Include="App_Data\SmestajneJedinice.txt" />
     <Content Include="Content\CSS\flexboxgrid.css" />
     <Content Include="Content\CSS\style.css" />
@@ -117,10 +118,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdministratorController.cs" />
+    <Compile Include="Controllers\AranzmanIzmenaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InformacijeController.cs" />
     <Compile Include="Controllers\IstorijaController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MenadzerController.cs" />
     <Compile Include="Controllers\ProfilController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\RezervacijeController.cs" />
@@ -153,6 +157,13 @@
     <Content Include="Views\Smestaj\Index.cshtml" />
     <Content Include="Views\Profil\Index.cshtml" />
     <Content Include="Views\Rezervacije\Index.cshtml" />
+    <Content Include="Views\Menadzer\Index.cshtml" />
+    <Content Include="Views\Menadzer\Pregled.cshtml" />
+    <Content Include="Views\AranzmanIzmena\Index.cshtml" />
+    <Content Include="Views\Menadzer\Smestaj.cshtml" />
+    <Content Include="Views\Menadzer\SmestajPregled.cshtml" />
+    <Content Include="Views\Administrator\Index.cshtml" />
+    <Content Include="Views\Administrator\Nalozi.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

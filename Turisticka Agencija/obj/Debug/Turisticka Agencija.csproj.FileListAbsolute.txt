@@ -62,7 +62,6 @@ C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\System.Web.Webp
 C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\System.Web.Helpers.xml
 C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\System.Web.Mvc.xml
 C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\obj\Debug\Turisticka Agencija.csprojAssemblyReference.cache
 C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\obj\Debug\Turisticka Agencija.csproj.CoreCompileInputs.cache
 C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\obj\Debug\Turisticka Agencija.csproj.CopyComplete
 C:\Users\Vuk\Desktop\Turisticka Agencija\Turisticka Agencija\obj\Debug\Turisticka Agencija.dll

@@ -11,6 +11,7 @@
     <!--INIT-->
 
     Korisnik korisnik = (Korisnik)HttpContext.Current.Session["korisnik"];
+    Dictionary<string, Korisnik> korisnici = (Dictionary<string, Korisnik>)HttpContext.Current.Application["korisnici"];
 
     <!--INIT-->
 
@@ -62,14 +63,16 @@
             <header id="main-header">
                 <div class="container">
                     <div class="row center-xs middle-xs middle-sm middle-md middle-lg">
-                        <div class="start-sm start-md start-lg col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <div class="start-sm start-md start-lg col-xs-12 col-sm-2 col-md-2 col-lg-2">
                             <h1><span class="primary-text">Travel</span>Fuge</h1>
                         </div>
-                        <div class="end-sm end-md end-lg col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                        <div class="end-sm end-md end-lg col-xs-12 col-sm-10 col-md-10 col-lg-10">
                             <nav id="navbar">
                                 <ul>
-                                    <li> <a href="~/Home/Index">Home</a></li>
-                                    <li class="active"><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
+                                    <li><a href="~/Home/Index">Home</a></li>
+                                    <li class="active"><a href="~/Rezervacije/Index">Rezervacije</a></li>
+                                    <li><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
+                                    <li><a href="~/Menadzer/Index">Kreriraj aranžman</a></li>
                                     <li><a href="~/Profil/Index">Profil</a></li>
                                     <li><a href="~/Login/Odjava">Odjava</a></li>
                                 </ul>
@@ -93,7 +96,10 @@
                             <nav id="navbar">
                                 <ul>
                                     <li><a href="~/Home/Index">Home</a></li>
-                                    <li class="active"><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
+                                    <li class="active"><a href="~/Rezervacije/Index">Rezervacije</a></li>
+                                    <li><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
+                                    <li><a href="~/Menadzer/Index">Kreriraj aranžman</a></li>
+                                    <li><a href="~/Administrator/Index">Registruj menadžera</a></li>
                                     <li><a href="~/Profil/Index">Profil</a></li>
                                     <li><a href="~/Login/Odjava">Odjava</a></li>
                                 </ul>
@@ -114,7 +120,7 @@
     <section id="showcase">
         <div class="container">
             <div class="row center-xs center-sm center-md center-lg middle-sm">
-                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-7 showcase-content">
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-9 showcase-content">
                     <h1>LETOVANJE 2021 uz <span class="primary-text">Travel</span>Fuge</h1>
                     <p style="color:white; font-size:25px; margin-top:10px">Klikom do mora</p>
                 </div>
@@ -133,21 +139,24 @@
                     <h2>Rezervacije</h2>
                     <p>Srećan put želi Vam <span class="primary-text">Travel</span>Fuge</p>
                     <div class="row center-xs center-sm center-md center-md">
-                        @foreach (Rezervacija r in korisnik.rezervacije.Values)
+                        @if (korisnik.rezervacije != null)
                         {
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                <p style="text-align:left; font-size:15px; margin-left: 115px">
-                                    ID Rezervacije: <span class="primary-text">@r.oznakaRezervacije</span> <br>
-                                    Ime: @r.korisnik.ime <br>
-                                    Prezime: @r.korisnik.prezime <br>
-                                    Status: @r.status.ToString() <br>
-                                    Naziv aranžmana: @r.aranzman.naziv <br>
-                                    Naziv smeštaja: @r.smestajnaJedinica.nazivSmestaja <br>
-                                    Broj gostiju: @r.smestajnaJedinica.dozvoljenBrojGostiju <br>
-                                </p>
-                            </div>
+                            foreach (Rezervacija r in korisnik.rezervacije.Values)
+                            {
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <p style="text-align:left; font-size:15px; margin-left: 115px">
+                                        ID Rezervacije: <span class="primary-text">@r.oznakaRezervacije</span> <br>
+                                        Ime: @r.korisnik.ime <br>
+                                        Prezime: @r.korisnik.prezime <br>
+                                        Status: @r.status.ToString() <br>
+                                        Naziv aranžmana: @r.aranzman.naziv <br>
+                                        Naziv smeštaja: @r.smestajnaJedinica.nazivSmestaja <br>
+                                        Broj gostiju: @r.smestajnaJedinica.dozvoljenBrojGostiju <br>
+                                    </p>
+                                </div>
+                            }
                         }
-                        </div>
+                    </div>
                     <h4 style="margin-bottom:20px; color:#7BA17D">@ViewBag.Error</h4>
                 </div>
             </div>
@@ -191,7 +200,6 @@
     </form>
 
     <!-- PRETRAGA ARANŽMANA -->
-
     <!-- SORTIRANJE REZERVACIJA -->
 
     <form action="~/Rezervacije/Sortiranje" method="post">
@@ -225,7 +233,6 @@
     </form>
 
     <!-- SORTIRANJE REZERVACIJA -->
-
     <!-- INFORMACIJE -->
 
     <section id="company">
@@ -248,7 +255,6 @@
     </section>
 
     <!-- INFORMACIJE -->
-
     <!-- FOOTER -->
 
     <footer id="main-footer">

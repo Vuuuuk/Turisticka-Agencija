@@ -1,7 +1,7 @@
 ﻿@using Turisticka_Agencija.Models
 @{
     Layout = null;
-    ViewBag.Title = "Registracija";
+    ViewBag.Title = "Registracija menadžera";
 }
 
 <!DOCTYPE html>
@@ -28,9 +28,12 @@
                     <nav id="navbar">
                         <ul>
                             <li><a href="~/Home/Index">Home</a></li>
+                            <li><a href="~/Rezervacije/Index">Rezervacije</a></li>
                             <li><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
-                            <li><a href="~/Login/Index">Prijava</a></li>
-                            <li class="active"><a href="~/Register/Index">Registracija</a></li>
+                            <li><a href="~/Menadzer/Index">Kreriraj aranžman</a></li>
+                            <li class="active"><a href="~/Administrator/Index">Registruj menadžera</a></li>
+                            <li><a href="~/Profil/Index">Profil</a></li>
+                            <li><a href="~/Login/Odjava">Odjava</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -55,16 +58,16 @@
 
     <!-- GLAVNI HEADER -->
 
-    <!-- REGISTRACIJA -->
+   <!-- REGISTRACIJA -->
 
     <section id="offers">
         <div class="container">
             <div class="row center-xs center-sm center-md center-md">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <h2>Registracija</h2>
-                    <p>Već imate nalog, prijavite se <a href="~/Login/Index"><span class="primary-text">ovde</span></a></p>
+                    <h2>Registracija menadžera</h2>
+                    <p>Ostale naloge možete pogledati <a href="~/Administrator/Nalozi"><span class="primary-text">ovde</span></a></p>
                     <div class="row center-xs center-sm center-md center-md">
-                        <form action="~/Register/Registracija" method="post" style="margin-top:20px; margin-bottom:20px">
+                        <form action="~/Administrator/Registracija" method="post" style="margin-top:20px; margin-bottom:20px">
                             <input type="text" name="korisnicko_ime" placeholder="Unesite Vaše korisničko ime" required>
                             <input type="password" name="lozinka" placeholder="Unesite Vaše korisničku lozinku" required>
                             <br>
@@ -80,7 +83,7 @@
                             <input type="email" name="email" placeholder="Unesite Vašu email adresu" required>
                             <br>
                             <input type="date" name="datumRodjenja" placeholder="Odaberite Vaš datum rođenja" style="width:262px; text-align:center" required>
-                            <input type="text" name="uloga" value="TURISTA" hidden>
+                            <input type="text" name="uloga" value="MENADZER" hidden>
                             <input type="submit" value="Registracija"
                                    style="
                                         color:white;

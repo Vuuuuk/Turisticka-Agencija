@@ -40,12 +40,15 @@ namespace Turisticka_Agencija.Models
         public string posterAranzmana { get; set; }
         public Smestaj smestaj { get; set; }
 
+        public string menadzerID { get; set; }
+        public bool obrisan { get; set; }
+
 
         public Aranzman() { }
 
         public Aranzman(string naziv, TipAranzmana tipAranzmana, TipPrevoza tipPrevoza, string lokacija, DateTime datumPocetkaPutovanja, 
                         DateTime datumZavrsetkaPutovanja, MestoNalazenja mestoNalazenja, TimeSpan vremeNalazenja, int maksimalanBrojPutnika, 
-                        string opisAranzmana, string programPutovanja, string posterAranzmana, Smestaj smestaj)
+                        string opisAranzmana, string programPutovanja, string posterAranzmana, Smestaj smestaj, string menadzerID, bool obrisan)
         {
             this.naziv = naziv;
             this.tipAranzmana = tipAranzmana;
@@ -60,6 +63,8 @@ namespace Turisticka_Agencija.Models
             this.programPutovanja = programPutovanja;
             this.posterAranzmana = posterAranzmana;
             this.smestaj = smestaj;
+            this.menadzerID = menadzerID;
+            this.obrisan = obrisan;
         }
     }
 }

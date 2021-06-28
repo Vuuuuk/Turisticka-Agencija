@@ -22,7 +22,7 @@ namespace Turisticka_Agencija.Controllers
 
             foreach (SmestajnaJedinica s in initSmestajneJedinice)
                 foreach (Aranzman a in aranzmani.Values)
-                    if (s.nazivSmestaja.Equals(a.smestaj.naziv))
+                    if (s.nazivSmestaja.Equals(a.smestaj.nazivSmestaja))
                         a.smestaj.smestajneJedinice.Add(s);
 
             List<SmestajnaJedinica> najnizaCenaZaPrikaz = new List<SmestajnaJedinica>();

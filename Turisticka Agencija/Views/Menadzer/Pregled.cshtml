@@ -1,7 +1,7 @@
 ﻿@using Turisticka_Agencija.Models
 @{
     Layout = null;
-    ViewBag.Title = "Home";
+    ViewBag.Title = "Pregled i izmena aranzmana";
 }
 
 <!DOCTYPE html>
@@ -12,14 +12,14 @@
 
     Dictionary<string, Aranzman> aranzmani = (Dictionary<string, Aranzman>)HttpContext.Current.Application["aranzmani"];
 
+    List<SmestajnaJedinica> cena = (List<SmestajnaJedinica>)HttpContext.Current.Application["cena"];
+
+    Korisnik korisnik = (Korisnik)HttpContext.Current.Session["korisnik"];
+
     string dpmin = (string)HttpContext.Current.Application["dpmin"];
     string dpmax = (string)HttpContext.Current.Application["dpmax"];
     string dkmin = (string)HttpContext.Current.Application["dkmin"];
     string dkmax = (string)HttpContext.Current.Application["dkmax"];
-
-    List<SmestajnaJedinica> cena = (List<SmestajnaJedinica>)HttpContext.Current.Application["cena"];
-
-    Korisnik korisnik = (Korisnik)HttpContext.Current.Session["korisnik"];
 
     <!--INIT-->
 
@@ -38,58 +38,7 @@
     <!-- GLAVNI MENI -->
 
     @{
-        if (korisnik == null)
-        {
-
-            <header id="main-header">
-                <div class="container">
-                    <div class="row center-xs middle-xs middle-sm middle-md middle-lg">
-                        <div class="start-sm start-md start-lg col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            <h1><span class="primary-text">Travel</span>Fuge</h1>
-                        </div>
-                        <div class="end-sm end-md end-lg col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                            <nav id="navbar">
-                                <ul>
-                                    <li class="active"><a href="~/Home/Index">Home</a></li>
-                                    <li><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
-                                    <li><a href="~/Login/Index">Prijava</a></li>
-                                    <li><a href="~/Register/Index">Registracija</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </header>
-
-        }
-
-        else if (korisnik != null && korisnik.uloga.Equals(Uloga.TURISTA))
-        {
-
-            <header id="main-header">
-                <div class="container">
-                    <div class="row center-xs middle-xs middle-sm middle-md middle-lg">
-                        <div class="start-sm start-md start-lg col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            <h1><span class="primary-text">Travel</span>Fuge</h1>
-                        </div>
-                        <div class="end-sm end-md end-lg col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                            <nav id="navbar">
-                                <ul>
-                                    <li class="active"><a href="~/Home/Index">Home</a></li>
-                                    <li><a href="~/Rezervacije/Index">Rezervacije</a></li>
-                                    <li><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
-                                    <li><a href="~/Profil/Index">Profil</a></li>
-                                    <li><a href="~/Login/Odjava">Odjava</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </header>
-
-        }
-
-        else if (korisnik != null && korisnik.uloga.Equals(Uloga.MENADZER))
+        if (korisnik != null && korisnik.uloga.Equals(Uloga.MENADZER))
         {
 
             <header id="main-header">
@@ -101,7 +50,7 @@
                         <div class="end-sm end-md end-lg col-xs-12 col-sm-10 col-md-10 col-lg-10">
                             <nav id="navbar">
                                 <ul>
-                                    <li class="active"><a href="~/Home/Index">Home</a></li>
+                                    <li><a href="~/Home/Index">Home</a></li>
                                     <li><a href="~/Rezervacije/Index">Rezervacije</a></li>
                                     <li><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
                                     <li><a href="~/Menadzer/Index">Kreriraj aranžman</a></li>
@@ -127,7 +76,7 @@
                         <div class="end-sm end-md end-lg col-xs-12 col-sm-8 col-md-8 col-lg-8">
                             <nav id="navbar">
                                 <ul>
-                                    <li class="active"><a href="~/Home/Index">Home</a></li>
+                                    <li><a href="~/Home/Index">Home</a></li>
                                     <li><a href="~/Rezervacije/Index">Rezervacije</a></li>
                                     <li><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
                                     <li><a href="~/Menadzer/Index">Kreriraj aranžman</a></li>
@@ -146,13 +95,12 @@
     }
 
     <!-- GLAVNI MENI -->
-
     <!-- GLAVNI HEADER -->
 
     <section id="showcase">
         <div class="container">
             <div class="row center-xs center-sm center-md center-lg middle-sm">
-                <div class="col-xs-12 col-sm-10 col-md-10 col- col-lg-9 showcase-content">
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-7 showcase-content">
                     <h1>LETOVANJE 2021 uz <span class="primary-text">Travel</span>Fuge</h1>
                     <p style="color:white; font-size:25px; margin-top:10px">Klikom do mora</p>
                 </div>
@@ -161,15 +109,12 @@
     </section>
 
     <!-- GLAVNI HEADER -->
-
     <!-- ARANZMANI -->
 
     <section id="offers">
         <div class="container">
             <div class="row center-xs center-sm center-md center-md">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <h2>Dostupni aranžmani</h2>
-                    <p>Izbegnite vrućinu uz <span class="primary-text">Travel</span>Fuge</p>
 
                     <div class="row center-xs center-sm center-md center-md">
 
@@ -182,7 +127,7 @@
 
                                 <!-- PRONALAZENJE PRVE CENE U LISTI/NAJNIZE -->
 
-                                if(a.smestaj.smestajneJedinice.Count() == 0)
+                                if (a.smestaj.smestajneJedinice.Count() == 0)
                                 {
                                     najnizaCena = 0;
                                 }
@@ -199,22 +144,58 @@
 
                                 <!-- PRONALAZENJE PRVE CENE U LISTI/NAJNIZE -->
 
-                                if (a.datumPocetkaPutovanja.CompareTo(DateTime.Now) > 0 && a.obrisan.Equals(false))
+                                if (a.menadzerID.Equals(korisnik.korisnicko_ime))
                                 {
                                     int brojDana = (a.datumZavrsetkaPutovanja - a.datumPocetkaPutovanja).Days;
-                                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                        <img class="aranzman" src="@a.posterAranzmana" />
-                                        <h4>@a.naziv</h4>
-                                        <p>
-                                            @a.datumPocetkaPutovanja.ToString("dd/MM/yyyy") - @a.datumZavrsetkaPutovanja.ToString("dd/MM/yyyy").
-                                            @brojDana dana već od <span class="primary-text-cena">@najnizaCena</span>,<span class="gore">EUR</span><span class="dole">00</span>
-                                            <br />
-                                        </p>
-                                        <form action="~/Informacije/PrikazInformacijaAranzmana" method="post">
-                                            <input type="text" name="naziv" value="@a.naziv" hidden>
-                                            <input type="submit" value="Pogledaj">
-                                        </form>
-                                    </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <img class="aranzman" src="@a.posterAranzmana" />
+                            <h4>@a.naziv</h4>
+                            <p>
+                                @a.datumPocetkaPutovanja.ToString("dd/MM/yyyy") - @a.datumZavrsetkaPutovanja.ToString("dd/MM/yyyy").
+                                @brojDana dana već od <span class="primary-text-cena">@najnizaCena</span>,<span class="gore">EUR</span><span class="dole">00</span>
+                                <br />
+                            </p>
+                            <form action="~/AranzmanIzmena/Index" method="post">
+                                <input type="text" name="naziv" value="@a.naziv" hidden>
+                                <input type="submit" value="Izmeni">
+                            </form>
+
+                            @{ bool rezervisano = false;}
+
+                            <!-- PROVERA ZA REZERVACIJE -->
+
+                            @if (korisnik.rezervacije != null)
+                            {
+                                foreach (Rezervacija r in korisnik.rezervacije.Values)
+                                {
+                                    if (r.aranzman.Equals(a))
+                                    {
+                                        rezervisano = true;
+                                    }
+                                    else
+                                    {
+                                        rezervisano = false;
+                                    }
+                                }
+                            }
+
+                            <!-- PROVERA ZA REZERVACIJE -->
+
+                            @if (a.obrisan.Equals(false) && !rezervisano)
+                            {
+                                <form action="~/Menadzer/Deaktiviraj" method="post">
+                                    <input type="text" name="naziv" value="@a.naziv" hidden>
+                                    <input type="submit" value="Deaktiviraj">
+                                </form>
+                            }
+                            else if (a.obrisan.Equals(true))
+                            {
+                                <form action="~/Menadzer/Aktiviraj" method="post">
+                                    <input type="text" name="naziv" value="@a.naziv" hidden>
+                                    <input type="submit" value="Aktiviraj">
+                                </form>
+                            }
+                        </div>
                                 }
                             }
                         }
@@ -231,13 +212,12 @@
 
     <!-- PRETRAGA ARANŽMANA -->
 
-    <form action="~/Home/Pretraga" method="post">
+    <form action="~/Menadzer/Pretraga" method="post">
         <section id="offers">
             <div class="container">
                 <div class="row center-xs center-sm center-md center-md">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <h2 style="margin-top: 15px">Pretraga i sortiranje aranžmana</h2>
-                        <p>Pronađite savršeno putovanje uz <span class="primary-text">Travel</span>Fuge</p>
 
                         <div class="row center-xs center-sm center-md center-md">
 
@@ -296,7 +276,7 @@
 
     <!-- SORTIRANJE ARANŽMANA -->
 
-    <form action="~/Home/Sortiranje" method="post">
+    <form action="~/Menadzer/Sortiranje" method="post">
         <section id="offers">
             <div class="container">
                 <div class="row center-xs center-sm center-md center-md">
@@ -329,6 +309,7 @@
 
     <!-- SORTIRANJE ARANŽMANA -->
 
+
     <!-- INFORMACIJE -->
 
     <section id="company">
@@ -351,7 +332,6 @@
     </section>
 
     <!-- INFORMACIJE -->
-
     <!-- FOOTER -->
 
     <footer id="main-footer">

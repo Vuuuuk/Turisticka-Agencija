@@ -1,0 +1,10 @@
+HOTEL;Stelina;5;True;False;True;True;False
+HOTEL;Amanda;5;True;False;True;True;False
+HOTEL;Kayakapi;5;True;False;True;True;False
+MOTEL;Palacio;4;False;True;True;True;False
+HOTEL;Viroth;5;True;False;True;True;False
+HOTEL;Tulemar;3;True;True;False;True;False
+VILA;Hanoi;2;False;True;False;True;False
+HOTEL;Crystal;5;True;False;True;True;False
+HOTEL;Albatros;5;True;False;True;True;False
+HOTEL;testSmestaj;5;False;True;True;True;False

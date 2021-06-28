@@ -1,7 +1,7 @@
 ﻿@using Turisticka_Agencija.Models
 @{
     Layout = null;
-    ViewBag.Title = "Profil";
+    ViewBag.Title = "Menadžer-Smeštaj";
 }
 
 <!DOCTYPE html>
@@ -9,6 +9,8 @@
 @{
 
     <!--INIT-->
+
+    Dictionary<string, Aranzman> aranzmani = (Dictionary<string, Aranzman>)HttpContext.Current.Application["aranzmani"];
 
     Korisnik korisnik = (Korisnik)HttpContext.Current.Session["korisnik"];
 
@@ -29,34 +31,7 @@
     <!-- GLAVNI MENI -->
 
     @{
-
-        if (korisnik != null && korisnik.uloga.Equals(Uloga.TURISTA))
-        {
-
-            <header id="main-header">
-                <div class="container">
-                    <div class="row center-xs middle-xs middle-sm middle-md middle-lg">
-                        <div class="start-sm start-md start-lg col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            <h1><span class="primary-text">Travel</span>Fuge</h1>
-                        </div>
-                        <div class="end-sm end-md end-lg col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                            <nav id="navbar">
-                                <ul>
-                                    <li><a href="~/Home/Index">Home</a></li>
-                                    <li><a href="~/Rezervacije/Index">Rezervacije</a></li>
-                                    <li><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
-                                    <li class="active"><a href="~/Profil/Index">Profil</a></li>
-                                    <li><a href="~/Login/Odjava">Odjava</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </header>
-
-        }
-
-        else if (korisnik != null && korisnik.uloga.Equals(Uloga.MENADZER))
+        if (korisnik != null && korisnik.uloga.Equals(Uloga.MENADZER))
         {
 
             <header id="main-header">
@@ -72,7 +47,7 @@
                                     <li><a href="~/Rezervacije/Index">Rezervacije</a></li>
                                     <li><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
                                     <li><a href="~/Menadzer/Index">Kreriraj aranžman</a></li>
-                                    <li class="active"><a href="~/Profil/Index">Profil</a></li>
+                                    <li><a href="~/Profil/Index">Profil</a></li>
                                     <li><a href="~/Login/Odjava">Odjava</a></li>
                                 </ul>
                             </nav>
@@ -99,7 +74,7 @@
                                     <li><a href="~/Istorija/Index">Prethodni aranžmani</a></li>
                                     <li><a href="~/Menadzer/Index">Kreriraj aranžman</a></li>
                                     <li><a href="~/Administrator/Index">Registruj menadžera</a></li>
-                                    <li class="active"><a href="~/Profil/Index">Profil</a></li>
+                                    <li><a href="~/Profil/Index">Profil</a></li>
                                     <li><a href="~/Login/Odjava">Odjava</a></li>
                                 </ul>
                             </nav>
@@ -113,6 +88,7 @@
     }
 
     <!-- GLAVNI MENI -->
+
     <!-- GLAVNI HEADER -->
 
     <section id="showcase">
@@ -127,61 +103,74 @@
     </section>
 
     <!-- GLAVNI HEADER -->
-    <!-- PROFIL -->
+
+
+    <!-- SMESTAJI -->
 
     <section id="offers">
         <div class="container">
             <div class="row center-xs center-sm center-md center-md">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <h2>Podešavanja profila</h2>
-                    <p>Izmenite Vaše <span class="primary-text">Travel</span>Fuge podatke u samo par klikova</p>
+                    <h2>Dodavanje smeštaja</h2>
+                    <p>Postojeće smeštaje možete pregledati i izmeniti <a href="~/Menadzer/SmestajPregled"><span class="primary-text">ovde</span></a>
+
+                    <h4 style="margin-bottom:20px; color:#7BA17D">@ViewBag.Error</h4>
+
+                </div>
+                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
                     <div class="row center-xs center-sm center-md center-md">
-                        <form action="~/Profil/Azuriranje" method="post" style="margin-top:20px; margin-bottom:20px">
-                            <input type="text" name="korisnicko_ime" value="@korisnik.korisnicko_ime" required hidden>
-                            <input type="password" name="lozinka" value="@korisnik.lozinka" required hidden>
-                            <br>
-                            <input type="text" name="ime" value="@korisnik.ime" required>
-                            <input type="text" name="prezime" value="@korisnik.prezime" required>
-                            <br>
-                            <input list="opredeljenje" name="pol" value="@korisnik.pol.ToString()" style="text-align:center" required>
-                            <datalist id="opredeljenje">
-                                <option value="MUSKI"></option>
-                                <option value="ZENSKI"></option>
-                                <option value="DRUGO"></option>
+                        <form action="~/Menadzer/DodajSmestaj" method="post" style="margin-top:20px; margin-bottom:20px">
+                            <input list="tipS" name="tipSmestaja" placeholder="Odaberite tip smeštaja" style="text-align:center" required>
+                            <datalist id="tipS">
+                                <option value="HOTEL"></option>
+                                <option value="MOTEL"></option>
+                                <option value="VILA"></option>
                             </datalist>
-                            <input type="email" name="email" value="@korisnik.email" required>
+                            <input type="text" name="nazivSmestaja" placeholder="Unesite naziv smeštaja" required>
+                            <input type="text" name="obrisan" value="false" hidden>
                             <br>
-                            <input type="date" name="datumRodjenja" value="@korisnik.datumRodjenja.ToString("yyyy-MM-dd")" style="width:262px; text-align:center" required>
-                            @if (korisnik.uloga.Equals(Uloga.TURISTA))
-                            {
-                                <input type="text" name="uloga" value="TURISTA" hidden>
-                            }
-                            else if (korisnik.uloga.Equals(Uloga.MENADZER))
-                            {
-                                <input type="text" name="uloga" value="MENADZER" hidden>
-                            }
-                            else
-                            {
-                                <input type="text" name="uloga" value="ADMINISTRATOR" hidden>
-                            }
-                            <input type="submit" value="Izmeni"
+                            <input type="number" name="brojZvezdica" placeholder="Unesite broj zvezdica smeštaja" required>
+                            <input list="dostupanSpa" name="spa" placeholder="Odaberite dostupnost spa centra" style="text-align:center" required>
+                            <datalist id="dostupanSpa">
+                                <option value="true"></option>
+                                <option value="false"></option>
+                            </datalist>
+                            <br>
+                            <input list="prilagodjenost" name="prilagodjen" placeholder="Označite pristupačnost" style="text-align:center" required>
+                            <datalist id="prilagodjenost">
+                                <option value="true"></option>
+                                <option value="false"></option>
+                            </datalist>
+                            <input list="dostupanWifi" name="wifi" placeholder="Odaberite dostupnost interneta" style="text-align:center" required>
+                            <datalist id="dostupanWifi">
+                                <option value="true"></option>
+                                <option value="false"></option>
+                            </datalist>
+                            <br>
+                            <input list="dostupanBazen" name="bazen" placeholder="Odaberite dostupnost bazena" style="text-align:center" required>
+                            <datalist id="dostupanBazen">
+                                <option value="true"></option>
+                                <option value="false"></option>
+                            </datalist>
+                            <input type="submit" value="Dodaj smeštaj"
                                    style="
                                         color:white;
                                         padding:10px;
                                         border:0px;
-                                        width:267px;
+                                        width:268px;
                                         height:34px;
                                         text-align:center;
                                         margin-bottom:30px;">
                         </form>
                     </div>
-                    <h4 style="margin-bottom:20px; color:#7BA17D">@ViewBag.Poruka</h4>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PROFIL -->
+    <!-- SMESTAJI -->
+
+
     <!-- INFORMACIJE -->
 
     <section id="company">
@@ -204,6 +193,7 @@
     </section>
 
     <!-- INFORMACIJE -->
+
     <!-- FOOTER -->
 
     <footer id="main-footer">
@@ -217,6 +207,7 @@
     </footer>
 
     <!-- FOOTER -->
+
 
 </body>
 

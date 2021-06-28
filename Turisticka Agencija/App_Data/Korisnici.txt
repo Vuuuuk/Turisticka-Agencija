@@ -1,3 +1,7 @@
 administrator;administrator;Vuk;Radunović;DRUGO;el.teh.it.radunovic.vuk@gmail.com;05/05/1999;ADMINISTRATOR
-admin;admin;Isidora;Radunović;ZENSKI;rnikola011@gmail.com;11/05/2002;TURISTA
+admin;admin;Nikola;Radunović;ZENSKI;rnikola011@gmail.com;11/05/2002;ADMINISTRATOR
 korisnik1;korisnik1;Korisnik1;Korisnik1;MUSKI;korisnik1@gmail.com;10/06/2021;TURISTA
+korisnik2;korisnik2;Korisnik2;Korisnik2;MUSKI;korisnik2@gmail.com;10/10/1999;MENADZER
+korisnik3;korisnik3;Korisnik3;Korisnik3;MUSKI;korisnik3@gmail.com;08/10/2003;MENADZER
+menadzer1;menadzer1;menadzer1;menadzer1;DRUGO;menadzer1@gmail.com;11/08/2001;MENADZER
+menadzer2;menadzer2;menadzer2;menadzer2;MUSKI;menadzer2@gmail.com;10/04/1997;MENADZER
